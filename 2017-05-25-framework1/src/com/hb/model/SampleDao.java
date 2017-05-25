@@ -12,12 +12,11 @@ import java.util.Map;
 
 public class SampleDao {
 	private Connection conn;
-	private Connection myconn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
 	public SampleDao() throws ClassNotFoundException, SQLException {
-		Connection conn = null;
+		Connection myconn = null;
 		Class.forName("org.h2.Driver");
 		myconn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa","");
 		conn = myconn;
