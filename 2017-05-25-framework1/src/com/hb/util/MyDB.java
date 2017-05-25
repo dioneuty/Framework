@@ -14,8 +14,7 @@ public class MyDB {
 	public Connection getConnection() throws ClassNotFoundException, SQLException{
 			if(conn==null||conn.isClosed()){
 				Class.forName("org.h2.driver");
-				DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
-				
+				conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
 			}
 		return conn;
 		

@@ -22,6 +22,24 @@ public class SampleDao {
 		conn = myconn;
 	}
 	
+	public SampleDao(boolean auto) throws ClassNotFoundException, SQLException{
+		Connection myconn = null;
+		Class.forName("org.h2.Driver");
+		myconn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa","");
+		myconn.setAutoCommit(false);
+		conn = myconn;
+	}
+	
+	public void back() throws SQLException{
+		conn.rollback();
+	}
+	
+	public void closeAll() throws SQLException{
+		if(rs!=null) rs.close();
+		if(pstmt!=null) pstmt.close();
+		if(conn!=null) conn.close();
+	}
+	
 	public List<Map<String,Object>> selectAll() throws SQLException{
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		pstmt = conn.prepareStatement("select * from sample01");
@@ -38,9 +56,31 @@ public class SampleDao {
 		closeAll();
 		return list;
 	}
-	public void closeAll() throws SQLException{
-		if(rs!=null) rs.close();
-		if(pstmt!=null) pstmt.close();
-		if(conn!=null) conn.close();
+	
+	public Map<String,Object> selectOne(int sabun) throws SQLException{
+		Map<String,Object> map = new HashMap<>();
+		pstmt = conn.prepareStatement("select * from sample01 where sabun=?");
+		pstmt.setInt(1, sabun);
+		rs = pstmt.executeQuery();
+		if(rs.next()){
+			map.put("sabun",rs.getInt("sabun"));
+			map.put("name", rs.getString("name"));
+			map.put("nalja", rs.getDate("nalja"));
+			map.put("pay",rs.getInt("pay"));
+		}
+		closeAll();
+		return map;
+	}
+	
+	public int insertOne(int sabun, String name, int pay) throws SQLException{
+		int result = 0;
+		pstmt = conn.prepareStatement("insert into sample01 values(?,?,sysdate,?)");
+		pstmt.setInt(1, sabun);
+		pstmt.setString(2, name);
+		pstmt.setInt(3, pay);
+		result = pstmt.executeUpdate();
+		conn.commit();
+		closeAll();
+		return result;
 	}
 }
