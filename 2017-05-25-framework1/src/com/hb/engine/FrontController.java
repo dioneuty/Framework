@@ -47,9 +47,10 @@ public class FrontController extends HttpServlet{
 		}else if(fPath.equals(cPath + "/detail.do")){
 			controller = new DetailController();
 		}
-
-		url=controller.execute(req);
 		
+		if(controller != null){
+			url=controller.execute(req);			
+		}
 		
 		//view
 		req.getRequestDispatcher(url).forward(req, resp);
