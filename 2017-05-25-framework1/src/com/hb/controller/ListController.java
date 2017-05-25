@@ -5,9 +5,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.hb.engine.FrontImp;
 import com.hb.model.SampleDao;
 
-public class ListController {
+public class ListController implements FrontImp {
 	public String execute(HttpServletRequest req){
 
 		SampleDao dao;
@@ -16,6 +17,7 @@ public class ListController {
 			//url+="/list";
 			List list = dao.selectAll();
 			req.setAttribute("alist", list);
+			dao.closeAll();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

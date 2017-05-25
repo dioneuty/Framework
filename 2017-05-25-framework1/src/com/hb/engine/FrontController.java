@@ -1,9 +1,6 @@
 package com.hb.engine;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +11,7 @@ import com.hb.controller.AddController;
 import com.hb.controller.DetailController;
 import com.hb.controller.InsertController;
 import com.hb.controller.ListController;
-import com.hb.model.SampleDao;
+import com.hb.controller.UpdateController;
 
 //web.xml에 서블릿 정의
 public class FrontController extends HttpServlet{
@@ -30,37 +27,28 @@ public class FrontController extends HttpServlet{
 	}
 
 	protected void doDo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String url = null;
+		String url = "";
 		String fPath = req.getRequestURI();
 		String cPath = req.getContextPath();
 		
 		System.out.println(req.getRequestURI());
 		
-		try {
-			SampleDao dao = new SampleDao();
+		FrontImp controller = null;
 
-			if(fPath.equals(cPath + "/list.do")){
-				ListController lCon = new ListController();
-				url = lCon.execute(req);
-			}else if(fPath.equals(cPath + "/add.do")){
-				AddController aCon = new AddController();
-				url = aCon.execute(req);
-			}else if("POST".equals(req.getMethod()) && fPath.equals(cPath + "/insert.do")){
-				InsertController iCon = new InsertController();
-				url = iCon.execute(req);
-			}else if(fPath.equals(cPath + "/detail.do")){
-				DetailController dCon = new DetailController();
-				url = dCon.execute(req);
-			}else{
-				url = "/index.jsp";
-			}
-			dao.closeAll();
-		
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if(fPath.equals(cPath + "/list.do")){
+			controller = new ListController();
+			
+		}else if(fPath.equals(cPath + "/add.do")){
+			controller = new AddController();
+		}else if("POST".equals(req.getMethod()) && fPath.equals(cPath + "/insert.do")){
+			controller = new InsertController();
+		}else if("POST".equals(req.getMethod()) && fPath.equals(cPath + "/update.do")){
+			controller = new UpdateController();
+		}else if(fPath.equals(cPath + "/detail.do")){
+			controller = new DetailController();
 		}
+
+		url=controller.execute(req);
 		
 		
 		//view
