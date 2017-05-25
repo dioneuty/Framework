@@ -10,13 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hb.controller.AddController;
+import com.hb.controller.DetailController;
+import com.hb.controller.InsertController;
+import com.hb.controller.ListController;
 import com.hb.model.SampleDao;
 
 //web.xml에 서블릿 정의
 public class FrontController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String url = "/";
+		doDo(req, resp);
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		doDo(req, resp);
+	}
+
+	protected void doDo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String url = null;
 		String fPath = req.getRequestURI();
 		String cPath = req.getContextPath();
 		
@@ -25,20 +39,22 @@ public class FrontController extends HttpServlet{
 		try {
 			SampleDao dao = new SampleDao();
 
-			if(fPath.equals(cPath+"/list.do")){
-				url+="/list";
-				List list = dao.selectAll();
-				req.setAttribute("alist", list);
-			}else if(fPath.equals(cPath+"/add.do")){
-				url+="/add";
-			}else if(fPath.equals(cPath+"/detail.do")){
-				url+="/detail";
-				Map<String,Object>map = dao.selectOne(Integer.parseInt(req.getParameter("idx")));
-				req.setAttribute("bean", map);
+			if(fPath.equals(cPath + "/list.do")){
+				ListController lCon = new ListController();
+				url = lCon.execute(req);
+			}else if(fPath.equals(cPath + "/add.do")){
+				AddController aCon = new AddController();
+				url = aCon.execute(req);
+			}else if("POST".equals(req.getMethod()) && fPath.equals(cPath + "/insert.do")){
+				InsertController iCon = new InsertController();
+				url = iCon.execute(req);
+			}else if(fPath.equals(cPath + "/detail.do")){
+				DetailController dCon = new DetailController();
+				url = dCon.execute(req);
 			}else{
-				url+="/index";
+				url = "/index.jsp";
 			}
-			url+=".jsp";
+			dao.closeAll();
 		
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

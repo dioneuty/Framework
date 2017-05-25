@@ -24,13 +24,13 @@
 	<div>
 		<div>
 			<span>날짜</span>
-			<span>${bean.name }</span>
+			<span>${bean.nalja }</span>
 		</div>
 	</div>
 	<div>
 		<div>
 			<span>금액</span>
-			<span>${bean.nalja }</span>
+			<span>${bean.pay }</span>
 		</div>
 	</div>
 	
