@@ -26,12 +26,13 @@ public class SampleDao {
 		Connection myconn = null;
 		Class.forName("org.h2.Driver");
 		myconn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa","");
-		myconn.setAutoCommit(false);
+		myconn.setAutoCommit(auto);
 		conn = myconn;
 	}
 	
 	public void back() throws SQLException{
 		conn.rollback();
+		closeAll();
 	}
 	
 	public void closeAll() throws SQLException{
@@ -53,7 +54,7 @@ public class SampleDao {
 			map.put("pay",rs.getInt("pay"));
 			list.add(map);
 		}
-		closeAll();
+		//closeAll();
 		return list;
 	}
 	
@@ -68,7 +69,7 @@ public class SampleDao {
 			map.put("nalja", rs.getDate("nalja"));
 			map.put("pay",rs.getInt("pay"));
 		}
-		closeAll();
+		//closeAll();
 		return map;
 	}
 	
@@ -79,8 +80,7 @@ public class SampleDao {
 		pstmt.setString(2, name);
 		pstmt.setInt(3, pay);
 		result = pstmt.executeUpdate();
-		conn.commit();
-		closeAll();
+		//closeAll();
 		return result;
 	}
 }

@@ -1,4 +1,4 @@
-package com.hb.model;
+package com.hb.test;
 
 import static org.junit.Assert.*;
 
@@ -12,6 +12,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.hb.model.SampleDao;
 
 public class DaoTest {
     static Logger log = Logger.getLogger(DaoTest.class);

@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Hello</h1>
-	<a href="list.do">이동</a>
+
 </body>
 </html>

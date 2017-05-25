@@ -1,4 +1,4 @@
-package com.hb.model;
+package com.hb.test;
 
 import static org.junit.Assert.*;
 
