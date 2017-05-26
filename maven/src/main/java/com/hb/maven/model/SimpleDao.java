@@ -16,7 +16,7 @@ public class SimpleDao {
 	public SimpleDao(){
 		try {
 			Class.forName("org.h2.Driver");
-			DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
