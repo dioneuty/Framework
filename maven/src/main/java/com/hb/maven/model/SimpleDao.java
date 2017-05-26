@@ -49,6 +49,19 @@ public class SimpleDao {
 		if(pstmt != null) pstmt.close();
 		if(conn != null) conn.close();
 	}
+
+	public int insertOne(SimpleVo vo) throws SQLException {
+		String sql = "insert into simple02 (name, nalja, pay) values(?, ?, ?)";
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getNalja());
+			pstmt.setInt(3, vo.getPay());
+			return pstmt.executeUpdate();
+		}finally{
+			close();
+		}
+	}
 	
 	
 	
