@@ -18,12 +18,12 @@ public class InsertController implements MyController{
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		Map<String,String> errs = new HashMap<String,String>();
 		//해커가 get방식으로 입력하지 못하게 post가 아니면 다시 되돌리는 방식
 		if(!"POST".equals(request.getMethod())){
 			request.setAttribute("msg", "잘못된 접근입니다");
 			return "form";
 		}
+		Map<String,String> errs = new HashMap<>();
 		String param1 = request.getParameter("name");
 		String param2 = request.getParameter("nalja");
 		String param3 = request.getParameter("pay");
