@@ -51,7 +51,6 @@ public class FrontController extends HttpServlet{
 		if(controller != null){
 			url=controller.execute(req);			
 		}
-		
 		//view
 		req.getRequestDispatcher(url).forward(req, resp);
 	}
