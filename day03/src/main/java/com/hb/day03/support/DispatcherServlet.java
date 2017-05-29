@@ -1,6 +1,10 @@
 package com.hb.day03.support;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +18,26 @@ public class DispatcherServlet extends HttpServlet{
 	public void init() throws ServletException {
 		super.init();
 		
-		HandlerMapping.setMap("main.do", "com.hb.day03.controller.SelectAll");
+		Properties prop = new Properties();
+		InputStream is = getClass().getClassLoader().getResourceAsStream("bean.properties");
+		if(is != null){
+			try {
+				prop.load(is);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		Set<Object> obj = prop.keySet();
+		Iterator<Object> ite = obj.iterator();
+		while(ite.hasNext()){
+			String key = (String) ite.next();
+			String value = prop.getProperty(key);
+			HandlerMapping.setMap(key, value);
+		}
 	}
+	
+	
+	// HandlerMapping.setMap();
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
