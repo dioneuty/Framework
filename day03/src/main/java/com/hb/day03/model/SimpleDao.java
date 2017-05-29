@@ -26,6 +26,12 @@ public class SimpleDao {
 		}
 	}
 	
+	private void close() throws SQLException {
+		if(rs!=null) rs.close();
+		if(pstmt!=null) pstmt.close();
+		if(conn!=null) conn.close();
+	}
+	
 	public List selectAll() throws SQLException {
 		String sql = "select * from simple02";
 		List<SimpleVo> list = new ArrayList<>();
@@ -44,10 +50,16 @@ public class SimpleDao {
 		return list;
 	}
 
-	private void close() throws SQLException {
-		if(rs!=null) rs.close();
-		if(pstmt!=null) pstmt.close();
-		if(conn!=null) conn.close();
+	public int insertOne(String name, String nalja, int pay) throws SQLException {
+		String sql = "insert into simple02 (name,nalja,pay)";
+		sql += " values (?,?,?)";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, name);
+		pstmt.setString(2, nalja);
+		pstmt.setInt(3, pay);
+		int result = pstmt.executeUpdate();
+		close();
+		return result;
 	}
 	
 }
