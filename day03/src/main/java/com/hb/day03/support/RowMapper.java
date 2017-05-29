@@ -8,5 +8,5 @@ import java.util.List;
 public interface RowMapper {
 	final List list = new ArrayList();
 	
-	public abstract Object mapRow(ResultSet rs) throws SQLException;
+	Object mapRow(ResultSet rs) throws SQLException;
 }

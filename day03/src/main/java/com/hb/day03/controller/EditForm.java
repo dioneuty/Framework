@@ -17,8 +17,9 @@ public class EditForm implements MyController {
 		req.setAttribute("title", "수정");
 		req.setAttribute("nxtURI", "update.do");
 		String idx = req.getParameter("idx");
+		SimpleDao dao = new SimpleDao();
 		try {
-			req.setAttribute("bean", new SimpleDao().selectOne(Integer.parseInt(idx)));
+			req.setAttribute("bean", dao.selectOne(Integer.parseInt(idx)));
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

@@ -10,15 +10,14 @@ import java.util.List;
 
 import com.hb.day03.model.SimpleVo;
 
-public class UpdateJDBCTemplate {
+public class JDBCTemplate {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
-	public UpdateJDBCTemplate() {
-	}
+	public JDBCTemplate() {}
 	
-	public UpdateJDBCTemplate(Connection conn){
+	public JDBCTemplate(Connection conn){
 		this.conn = conn;
 	}
 	
@@ -27,13 +26,12 @@ public class UpdateJDBCTemplate {
 		for(int i = 0; i < objs.length; i++){
 			pstmt.setObject(i+1, objs[i]);
 		}
-		
 		int result = pstmt.executeUpdate();
+		close();
 		return result;
 	}
 	
 	private void close() throws SQLException {
-		if(rs!=null)rs.close();
 		if(pstmt!=null)pstmt.close();
 		if(conn!=null)conn.close();
 	}
@@ -52,17 +50,11 @@ public class UpdateJDBCTemplate {
 		close();
 		return obj;
 	}
-	
 	public List queryList(String sql, RowMapper mapper) throws SQLException{
-		List list = mapper.list; 
-		pstmt = conn.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-		Object obj = mapper.mapRow(rs);
-		close();
-		return list;
+		return queryList(sql,new Object[]{},mapper);
 	}
 	
-	public List<SimpleVo> queryList(String sql, Object[] objs, RowMapper mapper) throws SQLException {
+	public List queryList(String sql, Object[] objs, RowMapper mapper) throws SQLException {
 		List list = mapper.list; 
 		pstmt = conn.prepareStatement(sql);
 		for(int i = 0; i<objs.length; i++){
