@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UpdateJDBCTemplate {
 	private Connection conn;
@@ -53,5 +55,12 @@ public class UpdateJDBCTemplate {
 		close();
 		return obj;
 	}
-	
+	public List queryList(String sql, RowMapper mapper) throws SQLException{
+		List list = mapper.list; 
+		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		Object obj = mapper.mapRow(rs);
+		close();
+		return list;
+	}
 }

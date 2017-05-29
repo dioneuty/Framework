@@ -31,7 +31,7 @@ public class SimpleDao {
 	public List<SimpleVo> selectAll() throws SQLException {
 		String sql="SELECT * FROM SIMPLE02";
 		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate();
-		return jdbc.queryList(sql,new RowMapper(){
+		return jdbc.queryList(sql,new Object[]{10},new RowMapper(){
 			@Override
 			public Object mapRow(ResultSet rs) throws SQLException {
 				List<SimpleVo> list = new ArrayList<>();
