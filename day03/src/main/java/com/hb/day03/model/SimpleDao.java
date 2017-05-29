@@ -58,10 +58,12 @@ public class SimpleDao {
 			@Override
 			public Object mapper(ResultSet rs) throws SQLException {
 				SimpleVo bean = new SimpleVo();
+				if(rs.next()){
 				bean.setSabun(rs.getInt("sabun"));
 				bean.setName(rs.getString("name"));
 				bean.setNalja(rs.getString("nalja"));
 				bean.setPay(rs.getInt("pay"));
+				}
 				return bean;
 			}
 		};
