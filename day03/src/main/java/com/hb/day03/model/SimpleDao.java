@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.hb.day03.support.UpdateJDBC;
+import com.hb.day03.support.UpdateJDBC2;
 
 public class SimpleDao {
 	private Connection conn;
@@ -30,27 +31,41 @@ public class SimpleDao {
 
 	public List<SimpleVo> selectAll() throws SQLException {
 		String sql="SELECT * FROM SIMPLE02";
-		pstmt=conn.prepareStatement(sql);
-		rs=pstmt.executeQuery();
-		List list = temp(rs);
-		close();
-		return list;
+		UpdateJDBC2 jdbc = new UpdateJDBC2() {
+			
+			@Override
+			public Object mapper(ResultSet rs) throws SQLException {
+				List<SimpleVo> list = new ArrayList<>();
+				while(rs.next()){
+					SimpleVo bean = new SimpleVo();
+					bean.setSabun(rs.getInt("sabun"));
+					bean.setName(rs.getString("name"));
+					bean.setNalja(rs.getString("nalja"));
+					bean.setPay(rs.getInt("pay"));
+					list.add(bean);
+				}
+				return list;
+			}
+		};
+		return (List) jdbc.executeQuery(sql);
 	}
 	
 	public SimpleVo selectOne(int sabun) throws SQLException {
 		String sql="SELECT * FROM SIMPLE02 WHERE SABUN=?";
-		SimpleVo bean= new SimpleVo();
-		pstmt=conn.prepareStatement(sql);
-		pstmt.setInt(1, sabun);
-		rs=pstmt.executeQuery();
-		while(rs.next()){
-			bean.setSabun(rs.getInt("sabun"));
-			bean.setName(rs.getString("name"));
-			bean.setNalja(rs.getString("nalja"));
-			bean.setPay(rs.getInt("pay"));
-		}
-		close();
-		return bean;
+		Object[] objs = new Object[]{sabun};
+		UpdateJDBC2 jdbc = new UpdateJDBC2() {
+			
+			@Override
+			public Object mapper(ResultSet rs) throws SQLException {
+				SimpleVo bean = new SimpleVo();
+				bean.setSabun(rs.getInt("sabun"));
+				bean.setName(rs.getString("name"));
+				bean.setNalja(rs.getString("nalja"));
+				bean.setPay(rs.getInt("pay"));
+				return bean;
+			}
+		};
+		return (SimpleVo) jdbc.executeQuery(sql,objs);
 	}
 	
 

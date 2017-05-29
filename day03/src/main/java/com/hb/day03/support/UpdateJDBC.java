@@ -25,16 +25,6 @@ public class UpdateJDBC {
 	
 	public int executeUpdate(String sql,Object[] objs) throws SQLException{
 		pstmt = conn.prepareStatement(sql);
-//		pstmt.setString(1, name);
-//		pstmt.setString(2, nalja);
-//		pstmt.setInt(3, pay);
-		
-//		pstmt = conn.prepareStatement(sql);
-//		pstmt.setString(1, name);
-//		pstmt.setString(2, nalja);
-//		pstmt.setInt(3, pay);
-//		pstmt.setInt(4, sabun);
-		
 		for(int i = 0; i < objs.length; i++){
 			pstmt.setObject(i+1, objs[i]);
 		}
