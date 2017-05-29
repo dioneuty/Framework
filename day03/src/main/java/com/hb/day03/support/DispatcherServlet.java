@@ -14,7 +14,7 @@ public class DispatcherServlet extends HttpServlet{
 	public void init() throws ServletException {
 		super.init();
 		
-		HandlerMapping.setMap("/main.do", "com.hb.day03.controller.SelectAll");
+		HandlerMapping.setMap("main.do", "com.hb.day03.controller.SelectAll");
 	}
 	
 	@Override
@@ -31,7 +31,7 @@ public class DispatcherServlet extends HttpServlet{
 			return;
 		}
 		
-		String prefix = "";
+		String prefix = "/WEB-INF/page/";
 		String surfix = ".jsp";
 		req.getRequestDispatcher(prefix + path + surfix).forward(req, resp);
 	}
