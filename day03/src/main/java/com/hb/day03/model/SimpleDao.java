@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.hb.day03.support.UpdateJDBC;
+
 public class SimpleDao {
 	private Connection conn;
 	private PreparedStatement pstmt;
@@ -28,17 +30,9 @@ public class SimpleDao {
 
 	public List<SimpleVo> selectAll() throws SQLException {
 		String sql="SELECT * FROM SIMPLE02";
-		List<SimpleVo> list=new ArrayList<>();
 		pstmt=conn.prepareStatement(sql);
 		rs=pstmt.executeQuery();
-		while(rs.next()){
-			SimpleVo bean= new SimpleVo();
-			bean.setSabun(rs.getInt("sabun"));
-			bean.setName(rs.getString("name"));
-			bean.setNalja(rs.getString("nalja"));
-			bean.setPay(rs.getInt("pay"));
-			list.add(bean);
-		}
+		List list = temp(rs);
 		close();
 		return list;
 	}
@@ -69,27 +63,28 @@ public class SimpleDao {
 	public int insertOne(String name, String nalja, int pay) throws SQLException {
 		String sql="insert into simple02 (name,nalja,pay) ";
 		sql+=" values (?,?,?)";
-		pstmt=conn.prepareStatement(sql);
-		pstmt.setString(1, name);
-		pstmt.setString(2, nalja);
-		pstmt.setInt(3, pay);
-		int result=pstmt.executeUpdate();
-		close();
-		return result;
+		Object[] objs = new Object[]{name,nalja,pay};
+		UpdateJDBC jdbc = new UpdateJDBC();
+		return jdbc.executeUpdate(sql, objs);
 	}
 
 	public int updateOne(int sabun, String name, String nalja, int pay) throws SQLException {
-		String sql = "update simple02 set name=?,nalja=?.pay=? where sabun=?";
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, name);
-		pstmt.setString(2, nalja);
-		pstmt.setInt(3, pay);
-		pstmt.setInt(4, sabun);
-		pstmt.executeUpdate();
-		int result = 0;
-		close();
-		return result;
+		String sql = "update simple02 set name=?,nalja=?,pay=? where sabun=?";
+		Object[] objs = new Object[]{name,nalja,pay,sabun};
+		UpdateJDBC jdbc = new UpdateJDBC();
+		return jdbc.executeUpdate(sql, objs);
 		
 	}
-
+	public List temp(ResultSet rs) throws SQLException{
+		List<SimpleVo> list = new ArrayList<>();
+		while(rs.next()){
+			SimpleVo bean = new SimpleVo();
+			bean.setSabun(rs.getInt("sabun"));
+			bean.setName(rs.getString("name"));
+			bean.setNalja(rs.getString("nalja"));
+			bean.setPay(rs.getInt("pay"));
+			list.add(bean);
+		}
+		return list;
+	}
 }
