@@ -67,7 +67,6 @@ public class SimpleDao {
 			
 		});
 	}
-	
 
 	private void close() throws SQLException {
 		if(rs!=null)rs.close();
@@ -82,12 +81,17 @@ public class SimpleDao {
 		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate();
 		return jdbc.executeUpdate(sql, objs);
 	}
-
+	
 	public int updateOne(int sabun, String name, String nalja, int pay) throws SQLException {
 		String sql = "update simple02 set name=?,nalja=?,pay=? where sabun=?";
 		Object[] objs = new Object[]{name,nalja,pay,sabun};
 		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate();
 		return jdbc.executeUpdate(sql, objs);
-		
+	}
+	
+	public int deleteOne(int sabun) throws SQLException{
+		String sql="detete from simple02 where sabun=?";
+		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate();
+		return jdbc.executeUpdate(sql, new Object[]{sabun});
 	}
 }

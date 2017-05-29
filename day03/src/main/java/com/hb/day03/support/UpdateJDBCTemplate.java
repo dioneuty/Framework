@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hb.day03.model.SimpleVo;
+
 public class UpdateJDBCTemplate {
 	private Connection conn;
 	private PreparedStatement pstmt;
@@ -23,6 +25,10 @@ public class UpdateJDBCTemplate {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public UpdateJDBCTemplate(Connection conn){
+		this.conn = conn;
 	}
 	
 	public int executeUpdate(String sql,Object[] objs) throws SQLException{
@@ -55,9 +61,22 @@ public class UpdateJDBCTemplate {
 		close();
 		return obj;
 	}
+	
 	public List queryList(String sql, RowMapper mapper) throws SQLException{
 		List list = mapper.list; 
 		pstmt = conn.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		Object obj = mapper.mapRow(rs);
+		close();
+		return list;
+	}
+	
+	public List<SimpleVo> queryList(String sql, Object[] objs, RowMapper mapper) throws SQLException {
+		List list = mapper.list; 
+		pstmt = conn.prepareStatement(sql);
+		for(int i = 0; i<objs.length; i++){
+			pstmt.setObject(i+1, objs[i]);
+		}
 		rs = pstmt.executeQuery();
 		Object obj = mapper.mapRow(rs);
 		close();
