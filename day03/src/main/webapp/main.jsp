@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 
+	list   list.do   get
+	detail detail.do get
 	
+	insert update.do post
+	update update.do put
+	delete update.do delete 
+-->
 </body>
 </html>
