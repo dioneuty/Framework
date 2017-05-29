@@ -16,6 +16,8 @@ public class SimpleDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
+	UpdateJDBCTemplate jdbc;
+	
 	public SimpleDao() {
 		String url="jdbc:h2:tcp://localhost/~/test";
 		String user="sa";
@@ -27,6 +29,7 @@ public class SimpleDao {
 			e.printStackTrace();
 		}
 		
+		jdbc = new UpdateJDBCTemplate(conn);
 	}
 
 	public List<SimpleVo> selectAll() throws SQLException {
