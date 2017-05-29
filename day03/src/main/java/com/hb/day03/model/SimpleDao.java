@@ -55,7 +55,7 @@ public class SimpleDao {
 	public SimpleVo selectOne(int sabun) throws SQLException {
 		String sql="SELECT * FROM SIMPLE02 WHERE SABUN=?";
 		Object[] objs = new Object[]{sabun};
-		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate(conn);
+		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate();
 		return (SimpleVo) jdbc.executeQuery(sql,objs,new RowMapper(){
 			@Override
 			public Object mapRow(ResultSet rs) throws SQLException {
@@ -82,20 +82,20 @@ public class SimpleDao {
 		String sql="insert into simple02 (name,nalja,pay) ";
 		sql+=" values (?,?,?)";
 		Object[] objs = new Object[]{name,nalja,pay};
-		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate(conn);
+		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate();
 		return jdbc.executeUpdate(sql, objs);
 	}
 	
 	public int updateOne(int sabun, String name, String nalja, int pay) throws SQLException {
 		String sql = "update simple02 set name=?,nalja=?,pay=? where sabun=?";
 		Object[] objs = new Object[]{name,nalja,pay,sabun};
-		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate(conn);
+		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate();
 		return jdbc.executeUpdate(sql, objs);
 	}
 	
 	public int deleteOne(int sabun) throws SQLException{
 		String sql="detete from simple02 where sabun=?";
-		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate(conn);
+		UpdateJDBCTemplate jdbc = new UpdateJDBCTemplate();
 		return jdbc.executeUpdate(sql, new Object[]{sabun});
 	}
 }
