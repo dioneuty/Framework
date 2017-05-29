@@ -3,7 +3,7 @@ package com.hb.day03.model;
 public class SimpleVo {
 	private int sabun,pay;
 	private String name,nalja;
-	
+
 	public SimpleVo() {
 	}
 
@@ -38,9 +38,11 @@ public class SimpleVo {
 	public void setNalja(String nalja) {
 		this.nalja = nalja;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "SimpleVo [sabun=" + sabun + ", pay=" + pay + ", name=" + name + ", nalja=" + nalja + "]";
 	}
+	
+	
 }

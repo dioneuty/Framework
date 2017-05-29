@@ -12,6 +12,8 @@ public class AddForm implements MyController {
 
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("title", "입력");
+		req.setAttribute("nxtURI", "insert.do");
 		return "form";
 	}
 	

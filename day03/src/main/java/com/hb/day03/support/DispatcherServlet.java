@@ -36,6 +36,14 @@ public class DispatcherServlet extends HttpServlet{
 		}
 	}
 	
+	/*
+	 * list	list.do		get
+	 * detail	detail.do	get
+	 * insert	update.do	post
+	 * update	update.do	put
+	 * delete	update.do	delete
+	 */
+	
 	
 	// HandlerMapping.setMap();
 	
