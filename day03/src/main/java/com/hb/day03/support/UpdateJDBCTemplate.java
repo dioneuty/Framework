@@ -16,15 +16,6 @@ public class UpdateJDBCTemplate {
 	private ResultSet rs;
 
 	public UpdateJDBCTemplate() {
-		String url="jdbc:h2:tcp://localhost/~/test";
-		String user="sa";
-		String password="";
-		try {
-			Class.forName("org.h2.Driver");
-			conn=DriverManager.getConnection(url, user, password);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public UpdateJDBCTemplate(Connection conn){
