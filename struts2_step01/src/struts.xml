@@ -7,5 +7,8 @@
 		<action name="list" class="com.hb.action.SelectAll">
 			<result>/WEB-INF/page/list.jsp</result>
 		</action>
+		<action name="detail" class="com.hb.action.SelectOne">
+			<result>/WEB-INF/page/detail.jsp</result>
+		</action>
 	</package>
 </struts>
