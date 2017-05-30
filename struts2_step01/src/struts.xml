@@ -14,16 +14,23 @@
 			<result>/WEB-INF/page/add.jsp</result>
 		</action>
 		<action name="insert" class="com.hb.action.InsertOne">
-			<result>/WEB-INF/page/list.jsp</result>
+			<result type="chain" name="success">list</result>
+			<result name="input">/WEB-INF/page/add.jsp</result>
+			<result name="error">/err.jsp</result>
 		</action>
 		<action name="edit" class="com.hb.action.EditForm">
 			<result>/WEB-INF/page/edit.jsp</result>
+			<result name="error">/err.jsp</result>
 		</action>
 		<action name="update" class="com.hb.action.UpdateOne">
-			<result>/WEB-INF/page/detail.jsp</result>
+			<result type="chain" name="success">list</result>
+			<result name="input">/WEB-INF/page/edit.jsp</result>
+			<result name="error">/err.jsp</result>
 		</action>
 		<action name="delete" class="com.hb.action.DeleteOne">
-			<result>/WEB-INF/page/list.jsp</result>
+			<result type="chain" name="success">list</result>
+			<result name="input">/WEB-INF/page/detail.jsp</result>
+			<result name="error">/err.jsp</result>
 		</action>
 	</package>
 </struts>

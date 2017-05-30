@@ -26,5 +26,7 @@
 			<td>${bean.pay }</td>
 		</tr>
 	</table>
+	<a href="edit.action?sabun=${bean.sabun }">수정</a>
+	<a href="delete.action?sabun=${bean.sabun }">삭제</a>
 </body>
 </html>

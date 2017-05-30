@@ -62,4 +62,47 @@ public class SimpleDao {
 		if(pstmt != null) pstmt.close();
 		if(conn != null) conn.close();
 	}
+
+	public int insertOne(String name, String nalja, int pay) throws SQLException {
+		String sql = "insert into simple02 (name,nalja,pay)";
+		sql += " values (?,?,?)";
+		try{
+			conn = MyOracle.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, nalja);
+			pstmt.setInt(3, pay);
+			return pstmt.executeUpdate();
+		}finally{
+			closeAll();
+		}
+	}
+
+	public int updateOne(int sabun, String name, String nalja, int pay) throws SQLException {
+		String sql = "update simple02 set name=?, nalja=?, pay=?";
+		sql += " where sabun=?";
+		try{
+			conn = MyOracle.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, nalja);
+			pstmt.setInt(3, pay);
+			pstmt.setInt(4, sabun);
+			return pstmt.executeUpdate();
+		}finally{
+			closeAll();
+		}
+	}
+
+	public int deleteOne(int sabun) throws SQLException {
+		String sql = "delete from simple02 where sabun=?";
+		try{
+			conn = MyOracle.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			return pstmt.executeUpdate();
+		}finally{
+			closeAll();
+		}
+	}
 }

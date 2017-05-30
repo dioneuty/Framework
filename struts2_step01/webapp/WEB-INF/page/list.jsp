@@ -26,5 +26,6 @@
 		</tr>
 		</c:forEach>
 	</table>
+	<a href="add.action">입력</a>
 </body>
 </html>

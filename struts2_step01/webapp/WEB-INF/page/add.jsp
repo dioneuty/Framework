@@ -8,6 +8,20 @@
 </head>
 <body>
 	<h1>입력페이지</h1>
-	
+	<form action="insert.action">
+		<div>
+			<label for="name">이름</label>
+			<input type="text" name="name" id="name">
+		</div>
+		<div>
+			<label for="nalja">날짜</label>
+			<input type="date" name="nalja" id="nalja">
+		</div>
+		<div>
+			<label for="pay">금액</label>
+			<input type="number" name="pay" id="pay">
+		</div>
+		<button>입력</button>
+	</form>
 </body>
 </html>
