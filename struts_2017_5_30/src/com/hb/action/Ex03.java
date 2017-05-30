@@ -6,7 +6,7 @@ public class Ex03 extends ActionSupport{
 	private String msg;
 	
 	public String getMsg() {
-		return msg;
+		return this.msg;
 	}
 	
 	@Override

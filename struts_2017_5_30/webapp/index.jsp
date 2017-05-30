@@ -11,7 +11,8 @@
 	<ol>
 		<li><a href="step01.action">step01</a></li>
 		<li><a href="step03.action">step03</a></li>
-		<li><a href="step04.action">step04</a></li>
+		<li><a href="./other/step04.action">step04</a></li>
+		<li><a href="step05.action">step04</a></li>
 	</ol>
 </body>
 </html>

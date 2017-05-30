@@ -8,7 +8,7 @@ public class Ex04 extends ActionSupport{
 		this.msg2 = msg2;
 	}
 	public String getMsg2() {
-		return msg2;
+		return this.msg2;
 	}
 	@Override
 	public String execute() throws Exception {
