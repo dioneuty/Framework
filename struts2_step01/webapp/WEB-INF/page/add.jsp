@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>입력페이지</h1>
+	
 </body>
 </html>
