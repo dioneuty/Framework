@@ -1,11 +1,10 @@
-package com.hb.controller;
+package com.hb.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class HelloWorld extends ActionSupport{
+public class Ex01 extends ActionSupport {
 	@Override
 	public String execute() throws Exception {
-		return "failure";
-		
+		return super.execute();
 	}
 }

@@ -4,8 +4,30 @@
 	"http://struts.apache.org/dtds/struts-2.0.dtd">
 	<struts>
 		<package name="hello" extends="struts-default">
+			<action name="index" class="com.hb.controller.IndexAction">
+				<result>/index.jsp</result>
+			</action>	
 			<action name="step01" class="com.hb.controller.HelloWorld">
-				<result>/hello.jsp</result>
+				<result name="success">/hello.jsp</result>
+				<result name="failure">/err.jsp</result>
+			</action>		
+			<action name="step05" class="com.hb.action.Ex03">
+				<result>/ex05.jsp</result>
+			</action>
+			<action name="step06" class="com.hb.action.Ex04">
+				<result>/ex06.jsp</result>
+			</action>
+		</package>
+		<package name="hello2" namespace="/tutorial" extends="hello">
+			<action name="step02" class="com.hb.action.Ex01">
+				<result>/hello2/ex01.jsp</result>
 			</action>		
 		</package>
+		<package name="hello3" extends="hello2">
+			<action name="step03" class="com.hb.action.Ex01">
+				<result>/hello2/ex03.jsp</result>
+			</action>
+		</package>
+		
+		<include file="struts2.xml"></include>
 	</struts>
