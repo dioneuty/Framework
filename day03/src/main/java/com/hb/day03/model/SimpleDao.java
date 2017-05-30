@@ -33,6 +33,7 @@ public class SimpleDao {
 		return jdbc.queryList(sql,new RowMapper(){
 			@Override
 			public Object mapRow(ResultSet rs) throws SQLException {
+				list.clear();
 				while(rs.next()){
 					SimpleVo bean = new SimpleVo();
 					bean.setSabun(rs.getInt("sabun"));

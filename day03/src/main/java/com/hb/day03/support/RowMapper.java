@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface RowMapper {
 	final List list = new ArrayList();
-	
 	Object mapRow(ResultSet rs) throws SQLException;
 }

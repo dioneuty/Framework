@@ -35,7 +35,6 @@ public class DispatcherServlet extends HttpServlet{
 			HandlerMapping.setMap(key, value);
 		}
 	}
-	
 	/*
 	 * list	list.do		get
 	 * detail	detail.do	get
@@ -43,24 +42,19 @@ public class DispatcherServlet extends HttpServlet{
 	 * update	update.do	put
 	 * delete	update.do	delete
 	 */
-	
-	
 	// HandlerMapping.setMap();
-	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//controller
 		String uri = req.getRequestURI();
 		MyController controller = HandlerMapping.mapping(uri);
 		String path = controller.execute(req, resp);
-		
 		//view
 		if(path.startsWith("redirect:")){
 			path = path.replace("redirect:", "");
 			resp.sendRedirect(path);
 			return;
 		}
-		
 		String prefix = "/WEB-INF/page/";
 		String surfix = ".jsp";
 		req.getRequestDispatcher(prefix + path + surfix).forward(req, resp);
