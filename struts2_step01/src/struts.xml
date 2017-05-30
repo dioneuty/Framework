@@ -10,5 +10,20 @@
 		<action name="detail" class="com.hb.action.SelectOne">
 			<result>/WEB-INF/page/detail.jsp</result>
 		</action>
+		<action name="add" class="com.hb.action.AddForm">
+			<result>/WEB-INF/page/add.jsp</result>
+		</action>
+		<action name="insert" class="com.hb.action.InsertOne">
+			<result>/WEB-INF/page/list.jsp</result>
+		</action>
+		<action name="edit" class="com.hb.action.EditForm">
+			<result>/WEB-INF/page/edit.jsp</result>
+		</action>
+		<action name="update" class="com.hb.action.UpdateOne">
+			<result>/WEB-INF/page/detail.jsp</result>
+		</action>
+		<action name="delete" class="com.hb.action.DeleteOne">
+			<result>/WEB-INF/page/list.jsp</result>
+		</action>
 	</package>
 </struts>
