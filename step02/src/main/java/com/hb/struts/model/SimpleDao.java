@@ -45,4 +45,18 @@ public class SimpleDao {
 		if (pstmt != null) pstmt.close();
 		if (conn != null) conn.close();
 	}
+	public int insertOne(int sabun, String name, int pay) throws SQLException {
+		int result = 0;
+		String sql = "insert into simple03 (sabun,name,nalja,pay) values(?,?,sysdate,?)";
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			pstmt.setString(2, name);
+			pstmt.setInt(3, pay);
+			result = pstmt.executeUpdate();
+		}finally{
+			closeAll();
+		}
+		return result;
+	}
 }

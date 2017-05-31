@@ -28,4 +28,7 @@
 		<button>입력</button>
 	</form>
 </body>
+<script type="text/javascript">
+document.getElementById('nalja').valueAsDate = new Date();
+</script>
 </html>
