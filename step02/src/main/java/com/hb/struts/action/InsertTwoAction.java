@@ -20,7 +20,6 @@ public class InsertTwoAction implements Action {
 	@Override
 	public String execute() throws Exception {
 		SimpleDao dao = new SimpleDao();
-		SimpleVo bean = new SimpleVo();
 		int result = dao.insertOne(bean);
 		if(result>0) return SUCCESS;
 		else return INPUT;
