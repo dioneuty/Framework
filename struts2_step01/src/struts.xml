@@ -18,7 +18,7 @@
 			<result name="input">/WEB-INF/page/add.jsp</result>
 			<result name="error">/err.jsp</result>
 		</action>
-		<action name="edit" class="com.hb.action.EditForm">
+		<action name="edit" class="com.hb.action.SelectOne">
 			<result>/WEB-INF/page/edit.jsp</result>
 			<result name="error">/err.jsp</result>
 		</action>
