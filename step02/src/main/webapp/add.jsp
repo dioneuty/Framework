@@ -11,15 +11,15 @@
 	<form action="insert.action">
 		<div>
 			<label for="sabun">사번</label>
-			<input type="text" name="bean.sabun" id="sabun" />
+			<input type="text" name="sabun" id="sabun" />
 		</div>
 		<div>
 			<label for="name">이름</label>
-			<input type="text" name="bean.name" id="name" />
+			<input type="text" name="name" id="name" />
 		</div>
 		<div>
 			<label for="pay">금액</label>
-			<input type="text" name="bean.pay" id="pay" />
+			<input type="text" name="pay" id="pay" />
 		</div>
 		<button>입력</button>
 	</form>

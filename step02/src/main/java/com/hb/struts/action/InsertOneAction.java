@@ -26,11 +26,11 @@ public class InsertOneAction implements Action {
 	@Override
 	public String execute() throws Exception {
 		SimpleDao dao = new SimpleDao();
-		//int result = dao.insertOne(sabun,name,pay);
 		SimpleVo bean = new SimpleVo();
 		bean.setSabun(sabun);
 		bean.setName(name);
 		bean.setPay(pay);
+		//int result = dao.insertOne(sabun,name,pay);
 		int result = dao.insertOne(bean);
 		if(result>0) return SUCCESS;
 		else return INPUT;
