@@ -5,7 +5,20 @@ import com.hb.struts.model.SimpleVo;
 import com.opensymphony.xwork2.Action;
 
 public class InsertOneAction implements Action {
-	SimpleVo bean = new SimpleVo();
+	private int sabun,pay;
+	private String name;
+	
+	public void setSabun(int sabun) {
+		this.sabun = sabun;
+	}
+	
+	public void setPay(int pay) {
+		this.pay = pay;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	@Override
 	public String execute() throws Exception {

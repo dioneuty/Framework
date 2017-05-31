@@ -11,24 +11,17 @@
 	<form action="insert.action">
 		<div>
 			<label for="sabun">사번</label>
-			<input type="text" name="sabun" id="sabun" />
+			<input type="text" name="bean.sabun" id="sabun" />
 		</div>
 		<div>
 			<label for="name">이름</label>
-			<input type="text" name="name" id="name" />
-		</div>
-		<div>
-			<label for="nalja">날짜</label>
-			<input type="text" name="nalja" id="nalja" />
+			<input type="text" name="bean.name" id="name" />
 		</div>
 		<div>
 			<label for="pay">금액</label>
-			<input type="text" name="pay" id="pay" />
+			<input type="text" name="bean.pay" id="pay" />
 		</div>
 		<button>입력</button>
 	</form>
 </body>
-<script type="text/javascript">
-document.getElementById('nalja').valueAsDate = new Date();
-</script>
 </html>
