@@ -26,10 +26,11 @@
 		<action name="edit" class="com.hb.struts.action.DetailAction">
 			<result name="success">/edit.jsp</result>
 		</action>
-		<action name="update" class="com.hb.struts.action.UpdateTwoAction">
+		<action name="update" class="com.hb.struts.action.UpdateThreeAction">
 			<interceptor-ref name="params" />
+			<interceptor-ref name="workflow" />
 			<result name="input" type="redirectAction">
-				<param name="actionName">detail</param>
+				<param name="actionName">edit</param>
 				<param name="sabun">${bean.sabun}</param>
 			</result>
 			<result name="success" type="redirectAction">list</result>
