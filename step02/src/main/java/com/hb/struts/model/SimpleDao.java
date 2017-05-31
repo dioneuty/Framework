@@ -59,4 +59,22 @@ public class SimpleDao {
 		}
 		return result;
 	}
+	public SimpleVo selectOne(int sabun) throws SQLException {
+		String sql = "select * from simple03 where sabun=?";
+		SimpleVo bean= new SimpleVo();
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				bean.setSabun(rs.getInt("sabun"));
+				bean.setName(rs.getString("name"));
+				bean.setNalja(rs.getDate("nalja"));
+				bean.setPay(rs.getInt("pay"));
+			}
+		}finally {
+			closeAll();
+		}
+		return bean;
+	}
 }

@@ -20,6 +20,19 @@
 			<result name="success" type="redirect">/step02/list.action</result>
 			<result name="input">/add.jsp</result>
 		</action>
+		<action name="detail" class="com.hb.struts.action.DetailAction">
+			<result name="success">/detail.jsp</result>
+		</action>
+		<action name="edit" class="com.hb.struts.action.DetailAction">
+			<result name="success">/edit.jsp</result>
+		</action>
+		<action name="update" class="com.hb.struts.action.UpdateAction">
+			<result name="input" type="redirectAction">
+				<param name="actionName">detail</param>
+				<param name="sabun">${sabun}</param>
+			</result>
+			<result name="success" type="redirectAction">list</result>
+		</action>
 	</package>
 	
 </struts>

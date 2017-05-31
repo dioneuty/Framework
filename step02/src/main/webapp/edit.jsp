@@ -7,21 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>입력페이지</h1>
-	<form action="insert.action">
+	<h1>수정페이지</h1>
+	<form action="update.action">
 		<div>
 			<label for="sabun">사번</label>
-			<input type="text" name="sabun" id="sabun" />
+			<input type="text" name="sabun" id="sabun" value="${bean.sabun }" readonly/>
 		</div>
 		<div>
 			<label for="name">이름</label>
-			<input type="text" name="name" id="name" />
+			<input type="text" name="name" id="name" value="${bean.name }"/>
 		</div>
 		<div>
 			<label for="pay">금액</label>
-			<input type="text" name="pay" id="pay" />
+			<input type="text" name="pay" id="pay" value="${bean.pay }"/>
 		</div>
-		<button>입력</button>
+		<button type="sumbit">입력</button>
+		<button type="reset">취소</button>
 	</form>	
 </body>
 </html>
