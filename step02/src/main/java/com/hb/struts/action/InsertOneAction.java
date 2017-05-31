@@ -1,10 +1,13 @@
 package com.hb.struts.action;
 
+import org.apache.log4j.Logger;
+
 import com.hb.struts.model.SimpleDao;
 import com.hb.struts.model.SimpleVo;
 import com.opensymphony.xwork2.Action;
 
 public class InsertOneAction implements Action {
+	Logger log = Logger.getLogger(this.getClass());
 	private int sabun,pay;
 	private String name;
 	
