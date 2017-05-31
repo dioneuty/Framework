@@ -21,7 +21,6 @@ public class SelectOne extends ActionSupport{
 	public String execute() throws Exception {
 		SimpleDao dao = new SimpleDao();
 		bean = dao.selectOne(sabun);
-		
 		return this.SUCCESS;
 	}
 }

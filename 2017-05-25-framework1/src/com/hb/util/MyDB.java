@@ -13,8 +13,8 @@ public class MyDB {
 	
 	public Connection getConnection() throws ClassNotFoundException, SQLException{
 			if(conn==null||conn.isClosed()){
-				Class.forName("org.h2.driver");
-				conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott","tiger");
 			}
 		return conn;
 		

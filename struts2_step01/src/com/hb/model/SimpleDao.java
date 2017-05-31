@@ -17,7 +17,7 @@ public class SimpleDao {
 	private ResultSet rs;
 
 	public List selectAll() throws SQLException{
-		String sql = "select * from simple02 order by sabun";
+		String sql = "select * from guest01 order by sabun";
 		List<Map<String, Object>> list = new ArrayList<>();
 		try{
 			conn = MyOracle.getConnection();
@@ -38,7 +38,7 @@ public class SimpleDao {
 	}
 	
 	public Map<String, Object> selectOne(int sabun) throws SQLException{
-		String sql = "select * from simple02 where sabun=?";
+		String sql = "select * from guest01 where sabun=?";
 		Map<String, Object> bean = new HashMap<>();
 		try{
 			conn = MyOracle.getConnection();
@@ -64,7 +64,7 @@ public class SimpleDao {
 	}
 
 	public int insertOne(String name, String nalja, int pay) throws SQLException {
-		String sql = "insert into simple02 (name,nalja,pay)";
+		String sql = "insert into guest01(name,nalja,pay)";
 		sql += " values (?,?,?)";
 		try{
 			conn = MyOracle.getConnection();
@@ -79,7 +79,7 @@ public class SimpleDao {
 	}
 
 	public int updateOne(int sabun, String name, String nalja, int pay) throws SQLException {
-		String sql = "update simple02 set name=?, nalja=?, pay=?";
+		String sql = "update guest01 set name=?, nalja=?, pay=?";
 		sql += " where sabun=?";
 		try{
 			conn = MyOracle.getConnection();
@@ -95,7 +95,7 @@ public class SimpleDao {
 	}
 
 	public int deleteOne(int sabun) throws SQLException {
-		String sql = "delete from simple02 where sabun=?";
+		String sql = "delete from guest01 where sabun=?";
 		try{
 			conn = MyOracle.getConnection();
 			pstmt = conn.prepareStatement(sql);

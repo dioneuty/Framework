@@ -16,11 +16,11 @@ public class SimpleDao {
 	
 	public SimpleDao() {
 		Connection conn = null;
-		String url="jdbc:h2:tcp://localhost/~/test";
-		String user="sa";
-		String password="";
+		String url="jdbc:oracle:thin:@localhost:1521:xe";
+		String user="scott";
+		String password="tiger";
 		try {
-			Class.forName("org.h2.Driver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn=DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -29,7 +29,7 @@ public class SimpleDao {
 	}
 
 	public List<SimpleVo> selectAll() throws SQLException {
-		String sql="SELECT * FROM SIMPLE02";
+		String sql="select * from guest01";
 		return jdbc.queryList(sql,new RowMapper(){
 			@Override
 			public Object mapRow(ResultSet rs) throws SQLException {
@@ -48,7 +48,7 @@ public class SimpleDao {
 	}
 	
 	public SimpleVo selectOne(int sabun) throws SQLException {
-		String sql="SELECT * FROM SIMPLE02 WHERE SABUN=?";
+		String sql="select * from guest01 WHERE SABUN=?";
 		Object[] objs = new Object[]{sabun};
 		return (SimpleVo) jdbc.executeQuery(sql,objs,new RowMapper(){
 			@Override
@@ -66,13 +66,13 @@ public class SimpleDao {
 	}
 
 	public int insertOne(String name, String nalja, int pay) throws SQLException {
-		String sql="insert into simple02 (name,nalja,pay) values (?,?,?)";
+		String sql="insert into guest01(name,nalja,pay) values (?,?,?)";
 		Object[] objs = new Object[]{name,nalja,pay};
 		return jdbc.executeUpdate(sql, objs);
 	}
 	
 	public int updateOne(int sabun, String name, String nalja, int pay) throws SQLException {
-		String sql = "update simple02 set name=?,nalja=?,pay=? where sabun=?";
+		String sql = "update guest01 set name=?,nalja=?,pay=? where sabun=?";
 		Object[] objs = new Object[]{name,nalja,pay,sabun};
 		return jdbc.executeUpdate(sql, objs);
 	}

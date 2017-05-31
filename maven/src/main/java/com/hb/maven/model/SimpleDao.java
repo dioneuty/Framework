@@ -15,8 +15,8 @@ public class SimpleDao {
 	
 	public SimpleDao(){
 		try {
-			Class.forName("org.h2.Driver");
-			conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott","tiger");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -25,7 +25,7 @@ public class SimpleDao {
 	}
 	
 	public List selectAll() throws SQLException {
-		String sql = "select * from simple02";
+		String sql = "select * from guest01";
 		List<SimpleVo> list = new ArrayList<SimpleVo>();
 		try{
 			pstmt = conn.prepareStatement(sql);
@@ -51,7 +51,7 @@ public class SimpleDao {
 	}
 
 	public int insertOne(SimpleVo vo) throws SQLException {
-		String sql = "insert into simple02 (name, nalja, pay) values(?, ?, ?)";
+		String sql = "insert into guest01(name, nalja, pay) values(?, ?, ?)";
 		try{
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getName());

@@ -11,8 +11,8 @@ public class MyOracle {
 	public static Connection getConnection(){
 		try{
 			if(conn == null || conn.isClosed()){
-				Class.forName("org.h2.Driver");
-				conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott","tiger");
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();

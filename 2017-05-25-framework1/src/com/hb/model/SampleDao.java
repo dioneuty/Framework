@@ -17,15 +17,15 @@ public class SampleDao {
 	
 	public SampleDao() throws ClassNotFoundException, SQLException {
 		Connection myconn = null;
-		Class.forName("org.h2.Driver");
-		myconn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa","");
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		myconn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott","tiger");
 		conn = myconn;
 	}
 	
 	public SampleDao(boolean auto) throws ClassNotFoundException, SQLException{
 		Connection myconn = null;
-		Class.forName("org.h2.Driver");
-		myconn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa","");
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		myconn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott","tiger");
 		myconn.setAutoCommit(auto);
 		conn = myconn;
 	}
@@ -43,7 +43,7 @@ public class SampleDao {
 	
 	public List<Map<String,Object>> selectAll() throws SQLException{
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-		pstmt = conn.prepareStatement("select * from sample01");
+		pstmt = conn.prepareStatement("select * from guest01");
 		rs =pstmt.executeQuery();
 		while(rs.next()){
 			//JSON 객체와 흡사
@@ -60,7 +60,7 @@ public class SampleDao {
 	
 	public Map<String,Object> selectOne(int sabun) throws SQLException{
 		Map<String,Object> map = new HashMap<>();
-		pstmt = conn.prepareStatement("select * from sample01 where sabun=?");
+		pstmt = conn.prepareStatement("select * from guest01 where sabun=?");
 		pstmt.setInt(1, sabun);
 		rs = pstmt.executeQuery();
 		if(rs.next()){
@@ -75,7 +75,7 @@ public class SampleDao {
 	
 	public int insertOne(int sabun, String name, int pay) throws SQLException{
 		int result = 0;
-		pstmt = conn.prepareStatement("insert into sample01 values(?,?,sysdate,?)");
+		pstmt = conn.prepareStatement("insert into guest01 values(?,?,sysdate,?)");
 		pstmt.setInt(1, sabun);
 		pstmt.setString(2, name);
 		pstmt.setInt(3, pay);
