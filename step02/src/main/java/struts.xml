@@ -13,7 +13,8 @@
 		<action name="add">
 			<result name="success">/add.jsp</result>
 		</action>
-		<action name="insert" class="com.hb.struts.action.InsertThreeAction">
+		<action name="insert" class="com.hb.struts.action.InsertFourAction">
+			<interceptor-ref name="prepare" />
 			<interceptor-ref name="modelDriven" />
 			<interceptor-ref name="params" />
 			<result name="success" type="redirect">/step02/list.action</result>

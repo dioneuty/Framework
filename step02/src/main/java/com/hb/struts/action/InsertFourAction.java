@@ -6,10 +6,11 @@ import com.hb.struts.model.SimpleDao;
 import com.hb.struts.model.SimpleVo;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.Preparable;
 
-public class InsertThreeAction implements Action, ModelDriven {
+public class InsertFourAction implements Action, ModelDriven, Preparable {
 	Logger log = Logger.getLogger(this.getClass());
-	SimpleVo bean = new SimpleVo();
+	SimpleVo bean;
 		
 	@Override
 	public String execute() throws Exception {
@@ -23,5 +24,11 @@ public class InsertThreeAction implements Action, ModelDriven {
 	@Override
 	public Object getModel() {
 		return bean;
+	}
+
+	@Override
+	public void prepare() throws Exception {
+		bean = new SimpleVo();
+		
 	}
 }
