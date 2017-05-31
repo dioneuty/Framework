@@ -30,7 +30,6 @@ public class UpdateOne extends ActionSupport{
 		SimpleDao dao = new SimpleDao();
 		int result = dao.updateOne(sabun,name,nalja,pay);
 		System.out.println("1이면 수정 성공: " + result);
-		result = 0;
 		if(result > 0){
 			return this.SUCCESS;
 		}else{

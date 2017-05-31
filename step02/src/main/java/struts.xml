@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+		<action name="index" class="com.hb.struts.action.IndexAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="list" class="com.hb.struts.action.ListAction">
+			<result name="success">/list.jsp</result>
+		</action>
+		<action name="add">
+			<result name="success">/add.jsp</result>
+		</action>
+	</package>
+	
+</struts>
