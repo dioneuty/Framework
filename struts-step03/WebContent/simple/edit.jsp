@@ -29,15 +29,15 @@
 	  	<form action="update.action">
 	  		<div class="form-group">
 	  			<label for="sabun">사번</label> 
-	  			<input type="text" name="sabun" class="form-control" id="sabun" placeholder="번호를 입력">
+	  			<input type="text" name="sabun" class="form-control" id="sabun" value="${bean.sabun }" readonly>
 	  		</div>
 	  		<div class="form-group">
 	  			<label for="name">이름</label> 
-	  			<input type="text" name="name" class="form-control" id="name" placeholder="이름 입력">
+	  			<input type="text" name="name" class="form-control" id="name" value="${bean.name }" placeholder="이름 입력">
 	  		</div>
 	  		<div class="form-group">
 	  			<label for="pay">금액</label> 
-	  			<input type="text" name="pay" class="form-control" id="pay" placeholder="원 단위로 입력">
+	  			<input type="text" name="pay" class="form-control" id="pay" value="${bean.pay }" placeholder="원 단위로 입력">
 	  		</div>
 	  		<button type="submit" class="btn btn-default">입력</button>
 	  	</form>

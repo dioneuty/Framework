@@ -7,6 +7,7 @@ public class SimpleVo {
 	private String name;
 	private Date nalja;
 	private int pay;
+	public SimpleVo(){}
 	public SimpleVo(int sabun, String name, Date nalja, int pay) {
 		super();
 		this.sabun = sabun;

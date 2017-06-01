@@ -21,13 +21,38 @@
   </head>
 <body>
 	<div class="container">
-		<div class="jumbotron">
-			<h1>상세페이지</h1>
+		<div class="row">
+			<div class="jumbotron">
+				<h1>상세페이지</h1>
 
-			<p>
-				<a class="btn btn-primary btn-lg" href="edit.action" role="button">수정</a>
-				<a class="btn btn-primary btn-lg" href="del.action" role="button">삭제</a>
-			</p>
+				<p>
+					<a class="btn btn-primary btn-lg" href="edit.action" role="button">수정</a>
+					<a class="btn btn-primary btn-lg" href="del.action" role="button">삭제</a>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div>
+					<span>사번</span>
+					<span>${bean.sabun}</span>
+				</div>
+				<div>
+					<span>이름</span>
+					<span>${bean.name}</span>
+				</div>
+				<div>
+					<span>날짜</span>
+					<span>${bean.nalja}</span>
+				</div>
+				<div>
+					<span>금액</span>
+					<span>${bean.pay}</span>
+				</div>
+				<p><a class="btn btn-primary btn-lg" href="update.action?sabun=${bean.sabun }" role="button">수정</a></p>
+				<p><a class="btn btn-primary btn-lg" href="del.action?sabun=${bean.sabun }" role="button">삭제</a></p>
+			</div>
+			
 		</div>
 	</div>
 

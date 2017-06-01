@@ -4,4 +4,10 @@
 	<select id="selectAll" resultClass="com.hb.struts2.model.SimpleVo">
 		select * from simple03 order by sabun
 	</select>
+	<select id="selectOne" parameterClass="int" resultClass="com.hb.struts2.model.SimpleVo">
+		select * from simple03 where sabun=#value#
+	</select>
+	<update id="updateOne" parameterClass="com.hb.struts2.model.SimpleVo">
+		update simple03 set name=#name#, pay=#pay# where sabun=#sabun#
+	</update>
 </sqlMap>

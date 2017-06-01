@@ -23,5 +23,11 @@ public class SimpleDao {
 	public List<SimpleVo> seletAll() throws SQLException {
 		return smc.queryForList("selectAll");
 	}
+	public SimpleVo selectOne(int sabun) throws SQLException {
+		return (SimpleVo) smc.queryForObject("selectOne",sabun);
+	}
+	public int updateOne(SimpleVo bean) throws SQLException {
+		return smc.update("updateOne",bean);
+	}
 
 }
