@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+		<action name="index">
+			<result>/index.jsp</result>
+		</action>
+	</package>
+	<package name="simple03" extends="default">
+		<action name="list" method="list" class="com.hb.struts2.action.SimpleAction">
+			<result>/simple/list.jsp</result>
+		</action>
+		<action name="add" method="add" class="com.hb.struts2.action.SimpleAction">
+			<result>/simple/add.jsp</result>
+		</action>
+		<action name="detail" method="detail" class="com.hb.struts2.action.SimpleAction">
+			<result>/simple/detail.jsp</result>
+		</action>
+		<action name="edit" method="edit" class="com.hb.struts2.action.SimpleAction">
+			<result>/simple/edit.jsp</result>
+		</action>
+	</package>
+</struts>
