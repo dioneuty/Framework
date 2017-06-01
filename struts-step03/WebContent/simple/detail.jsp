@@ -49,8 +49,11 @@
 					<span>금액</span>
 					<span>${bean.pay}</span>
 				</div>
-				<p><a class="btn btn-primary btn-lg" href="update.action?sabun=${bean.sabun }" role="button">수정</a></p>
-				<p><a class="btn btn-primary btn-lg" href="del.action?sabun=${bean.sabun }" role="button">삭제</a></p>
+				<p>
+					<a class="btn btn-primary btn-lg" href="edit.action?sabun=${bean.sabun }" role="button">수정</a>
+					<a class="btn btn-primary btn-lg" href="delete.action?sabun=${bean.sabun }" role="button">삭제</a>
+					<a class="btn btn-primary btn-lg" href="list.action" role="button">목록</a>
+				</p>
 			</div>
 			
 		</div>
