@@ -1,17 +1,27 @@
 package com.hb.struts2.model;
 
-import java.sql.Date;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.Reader;
+import java.sql.SQLException;
 import java.util.List;
 
-public class SimpleDao {
+import com.ibatis.common.resources.Resources;
+import com.ibatis.sqlmap.client.SqlMapClient;
+import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
-	public List<SimpleVo> seletAll() {
-		List<SimpleVo> list = new ArrayList();
-		list.add(new SimpleVo(1111,"test1",new Date(System.currentTimeMillis()),4321));
-		list.add(new SimpleVo(2222,"test2",new Date(System.currentTimeMillis()),4321));
-		list.add(new SimpleVo(3333,"test3",new Date(System.currentTimeMillis()),4321));
-		return list;
+public class SimpleDao {
+	private static SqlMapClient smc;
+	public SimpleDao(){
+		String path = "./SqlMapConfig.xml";
+		try {
+			Reader reader = Resources.getResourceAsReader(path);
+			smc = SqlMapClientBuilder.buildSqlMapClient(reader);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public List<SimpleVo> seletAll() throws SQLException {
+		return smc.queryForList("selectAll");
 	}
 
 }

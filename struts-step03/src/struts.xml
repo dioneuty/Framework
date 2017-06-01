@@ -20,6 +20,7 @@
 			<result>/simple/add.jsp</result>
 		</action>
 		<action name="detail" method="detail" class="com.hb.struts2.action.SimpleAction">
+			<interceptor-ref name="params"/>
 			<result>/simple/detail.jsp</result>
 		</action>
 		<action name="edit" method="edit" class="com.hb.struts2.action.SimpleAction">

@@ -35,12 +35,12 @@
 			<th>금액</th>
 		</tr>
 		<c:forEach items="${list }" var="bean">
-		<a href=""><tr>
+		<tr>
 			<td>${bean.sabun }</td>
-			<td>${bean.name }</td>
+			<td><a href="detail.action?sabun=${bean.sabun }">${bean.name }</a></td>
 			<td>${bean.nalja }</td>
 			<td>${bean.pay }</td>
-		</tr></a>
+		</tr>
 		</c:forEach>
 	</table>
   </div>
