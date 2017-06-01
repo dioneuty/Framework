@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,8 +21,29 @@
     <![endif]-->
   </head>
   <body>
-    <h1>목록페이지</h1>
-
+  <div class="container">
+  	<div class="jumbotron">
+    	<h1>목록페이지</h1>
+    	<p>..</p>
+    	<p><a class="btn btn-primary btn-lg" href="add.action" role="button">입력</a></p>
+  	</div>
+	<table class="table">
+		<tr>
+			<th>사번</th>
+			<th>이름</th>
+			<th>날짜</th>
+			<th>금액</th>
+		</tr>
+		<c:forEach items="${list }" var="bean">
+		<a href=""><tr>
+			<td>${bean.sabun }</td>
+			<td>${bean.name }</td>
+			<td>${bean.nalja }</td>
+			<td>${bean.pay }</td>
+		</tr></a>
+		</c:forEach>
+	</table>
+  </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

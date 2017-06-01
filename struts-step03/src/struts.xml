@@ -25,5 +25,8 @@
 		<action name="edit" method="edit" class="com.hb.struts2.action.SimpleAction">
 			<result>/simple/edit.jsp</result>
 		</action>
+		<action name="insert" method="insert" class="com.hb.struts2.action.SimpleAction">
+			<result name="success" type="redirectAction">list</result>
+		</action>
 	</package>
 </struts>
