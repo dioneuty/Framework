@@ -1,6 +1,9 @@
 package com.hb.struts2.action;
 
 public class SimpleAction {
+	public String execute(){
+		return "errors";
+	}
 	public String list(){
 		return "success";
 	}
