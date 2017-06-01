@@ -9,8 +9,12 @@
 		</action>
 	</package>
 	<package name="simple03" extends="default">
-		<action name="*!*" method="{1}" class="com.hb.struts2.action.SimpleAction">
-			<result>/simple/{2}.jsp</result>
+		<default-action-ref name="err" />
+		<action name="err" class="com.hb.struts2.action.SimpleAction">
+			<result name="error">/err.jsp</result>
+		</action>
+		<action name="*" method="{1}" class="com.hb.struts2.action.SimpleAction">
+			<result>/simple/{1}.jsp</result>
 		</action>
 		<!-- <action name="add" method="add" class="com.hb.struts2.action.SimpleAction">
 			<result>/simple/add.jsp</result>

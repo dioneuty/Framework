@@ -1,16 +1,16 @@
 package com.hb.struts2.action;
 
 public class SimpleAction {
-	public String listAll(){
+	public String list(){
 		return "success";
 	}
-	public String addForm(){
+	public String add(){
 		return "success";
 	}
-	public String listOne(){
+	public String detail(){
 		return "success";
 	}
-	public String editForm(){
+	public String edit(){
 		return "success";
 	}
 }
