@@ -8,12 +8,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Insert title here</title>
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script
+	  src="https://code.jquery.com/jquery-1.12.4.min.js"
+	  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+	  crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="css/boostrap.min.css">
 </head>
 <body>
-	<h1>환영합니다. 스프링입니다.</h1>
 	<div class="container">
 		<div class="row header">
 			<div class="col-md-12">
