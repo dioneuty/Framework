@@ -15,6 +15,7 @@ public class ListController implements Controller {
 		ModelAndView mav = new ModelAndView();
 		SimpleDao dao = new SimpleDao();
 		mav.addObject("alist", dao.selectAll());
+		mav.addObject("display", "none");
 		mav.setViewName("list");
 		return mav;
 	}
