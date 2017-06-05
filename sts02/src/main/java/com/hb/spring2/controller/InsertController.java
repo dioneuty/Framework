@@ -6,11 +6,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
+import com.hb.spring2.model.DaoImpl;
 import com.hb.spring2.model.SimpleDao;
 import com.hb.spring2.model.SimpleVo;
 
 public class InsertController extends AbstractController {
-	SimpleDao dao;
+	DaoImpl dao;
 	public void setDao(SimpleDao dao) {
 		this.dao = dao;
 	}

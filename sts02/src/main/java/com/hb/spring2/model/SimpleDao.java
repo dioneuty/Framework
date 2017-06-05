@@ -24,7 +24,7 @@ public class SimpleDao implements DaoImpl{
 			e.printStackTrace();
 		}
 	}
-	public List<SimpleVo> selectAll() throws SQLException{
+	public List<SimpleVo> selectAll() throws SQLException {
 		String sql = "SELECT * FROM simple03 ORDER BY sabun";
 		List<SimpleVo> list = new ArrayList<>();
 		try{
