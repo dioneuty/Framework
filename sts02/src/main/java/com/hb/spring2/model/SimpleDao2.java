@@ -88,5 +88,10 @@ public class SimpleDao2 implements DaoImpl{
 		if(pstmt != null) pstmt.close();
 		if(conn != null) conn.close();
 	}
+	@Override
+	public int updateOne(SimpleVo bean) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

@@ -93,5 +93,19 @@ public class SimpleDao3 implements DaoImpl {
 		if(pstmt != null) pstmt.close();
 		if(conn != null) conn.close();
 	}
+	@Override
+	public int updateOne(SimpleVo bean) throws SQLException {
+		String sql = "update simple03 set name=?,pay=? where sabun=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bean.getName());
+			pstmt.setInt(2, bean.getPay());
+			pstmt.setInt(3, bean.getSabun());
+			return pstmt.executeUpdate();
+		} finally {
+			closeAll();
+		}
+	}
 
 }

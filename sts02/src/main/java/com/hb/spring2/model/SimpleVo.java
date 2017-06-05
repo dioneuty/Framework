@@ -33,6 +33,8 @@ public class SimpleVo {
 		this.pay = pay;
 	}
 	
+	public SimpleVo() {
+	}
 	public SimpleVo(int sabun, String name, Date nalja, int pay) {
 		super();
 		this.sabun = sabun;

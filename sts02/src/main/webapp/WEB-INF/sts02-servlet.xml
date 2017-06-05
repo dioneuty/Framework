@@ -29,6 +29,7 @@
 				<prop key="/insert.do">insertOne</prop>
 				<prop key="/detail.do">selectOne</prop>
 				<prop key="/edit.do">editform</prop>
+				<prop key="/update.do">updateOne</prop>
 			</props>
 		</property> 
 	</bean>
@@ -52,6 +53,10 @@
 	<bean id="editform" class="com.hb.spring2.controller.DetailController">
 		<property name="dao" ref="daoImpl"></property>
 		<property name="viewName" value="edit"></property>
+	</bean>
+	<bean id="updateOne" class="com.hb.spring2.controller.UpdateController">
+		<property name="dao" ref="daoImpl"></property>
+		<constructor-arg name="commandClass" value="com.hb.spring2.model.SimpleVo"></constructor-arg>
 	</bean>
 <!-- view -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

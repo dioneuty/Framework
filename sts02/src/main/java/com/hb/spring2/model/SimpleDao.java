@@ -82,4 +82,9 @@ public class SimpleDao implements DaoImpl{
 			closeAll();
 		}
 	}
+	@Override
+	public int updateOne(SimpleVo bean) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
