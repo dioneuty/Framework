@@ -3,6 +3,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!-- url - controller  Mapping -->
+<bean id="dao" class="com.hb.spring2.model.SimpleDao"></bean>
+
 <!--1. HandlerMapping클래스 결정 -->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
@@ -18,11 +20,15 @@
 	<bean id="index" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="main"></property>
 	</bean>
-	<bean id="selectAll" class="com.hb.spring2.controller.ListController"></bean>
+	<bean id="selectAll" class="com.hb.spring2.controller.ListController">
+		<property name="dao" ref="dao"></property>
+	</bean>
 	<bean id="addform" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
 		<property name="viewName" value="add"></property>
 	</bean>
-	<bean id="insertOne" class="com.hb.spring2.controller.InsertController"></bean>
+	<bean id="insertOne" class="com.hb.spring2.controller.InsertController">
+		<property name="dao" ref="dao"></property>
+	</bean>
 <!-- view -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/page/"></property>

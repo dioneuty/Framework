@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hb.spring2.util.MyOracle;
+
 public class SimpleDao {
 	private Connection conn;
 	private PreparedStatement pstmt;
@@ -24,15 +26,16 @@ public class SimpleDao {
 		String sql = "SELECT * FROM simple03 ORDER BY sabun";
 		List<SimpleVo> list = new ArrayList<>();
 		try{
-		pstmt = conn.prepareStatement(sql);
-		rs = pstmt.executeQuery();
-			while (rs.next()) {
-				list.add(new SimpleVo(rs.getInt("sabun")
-						, rs.getString("name")
-						, rs.getDate("nalja")
-						, rs.getInt("pay")
-						));
-			}
+			conn = MyOracle.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+				while (rs.next()) {
+					list.add(new SimpleVo(rs.getInt("sabun")
+							, rs.getString("name")
+							, rs.getDate("nalja")
+							, rs.getInt("pay")
+							));
+				}
 		}finally{
 			closeAll();
 		}
@@ -46,6 +49,7 @@ public class SimpleDao {
 	public void insertOne(SimpleVo simpleVo) throws SQLException {
 		String sql = "insert into simple03 values (?,?,sysdate,?)";
 		try{
+			conn = MyOracle.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, simpleVo.getSabun());
 			pstmt.setString(2, simpleVo.getName());

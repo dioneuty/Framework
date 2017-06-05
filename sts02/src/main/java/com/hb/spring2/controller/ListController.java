@@ -13,13 +13,18 @@ import com.hb.spring2.model.SimpleDao;
 import com.hb.spring2.model.SimpleVo;
 
 public class ListController implements Controller {
-
+	private SimpleDao dao;
+	
+	public void setDao(SimpleDao dao) {
+		this.dao = dao;
+	}
+	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		// TODO Auto-generated method stub
 		ModelAndView mav = new ModelAndView();
+		System.out.println("list dao"+dao);
 		List<SimpleVo> alist = new ArrayList();
-		SimpleDao dao = new SimpleDao();
 		
 		mav.addObject("alist", dao.selectAll());
 		mav.setViewName("list");
