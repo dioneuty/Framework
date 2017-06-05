@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- url - controller  Mapping -->
+<!--1. HandlerMapping클래스 결정 -->
+	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/index.do">index</prop>
+				<prop key="/list.do">selectAll</prop>
+				<prop key="/add.do">addform</prop>
+			</props>
+		</property> 
+	</bean>
+<!--2. controller클래스 결정 -->	
+	<bean id="index" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="index"></property>
+	</bean>
+	<bean id="selectAll" class="com.hb.spring2.controller.ListController"></bean>
+	<bean id="addform" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="add"></property>
+	</bean>
+	<bean id="insertOne" class="com.hb.spring2.controller.InsertController"></bean>
+<!-- view -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/page/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+</beans>
