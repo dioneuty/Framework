@@ -16,16 +16,19 @@ public class SimpleDao3 implements DaoImpl {
 	private Connection conn;
 	private DataSource ds;
 	
+	public void setDs(DataSource ds) {
+		this.ds = ds;
+	}
 	public SimpleDao3() {
-		BasicDataSource bds = new BasicDataSource();
-		bds.setDriverClassName("oracle.jdbc.OracleDriver");
-		bds.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-		bds.setUsername("scott");
-		bds.setPassword("tiger");
-		bds.setMaxActive(50);
-		bds.setMaxIdle(10);
-		bds.setMaxWait(-1);
-		ds = bds;
+//		BasicDataSource bds = new BasicDataSource();
+//		bds.setDriverClassName("oracle.jdbc.OracleDriver");
+//		bds.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+//		bds.setUsername("scott");
+//		bds.setPassword("tiger");
+//		bds.setMaxActive(50);
+//		bds.setMaxIdle(10);
+//		bds.setMaxWait(-1);
+//		ds = bds;
 	}
 	
 	@Override

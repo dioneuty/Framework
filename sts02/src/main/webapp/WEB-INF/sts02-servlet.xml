@@ -3,7 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!-- url - controller  Mapping -->
-<bean id="daoImpl" class="com.hb.spring2.model.SimpleDao3"></bean>
+<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource">
+	<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+	<property name="username" value="scott"></property>
+	<property name="password" value="tiger"></property>
+	<property name="maxActive" value="50"></property>
+	<property name="maxIdle" value="10"></property>
+	<property name="maxWait" value="-1"></property>
+</bean>
+<bean id="daoImpl" class="com.hb.spring2.model.SimpleDao3" scope="singleton">
+	<property name="ds" ref="dataSource"></property>
+</bean>
 
 <!--1. HandlerMapping클래스 결정 -->
 
@@ -17,6 +28,7 @@
 				<prop key="/add.do">addform</prop>
 				<prop key="/insert.do">insertOne</prop>
 				<prop key="/detail.do">selectOne</prop>
+				<prop key="/edit.do">editform</prop>
 			</props>
 		</property> 
 	</bean>
@@ -35,6 +47,11 @@
 	</bean>
 	<bean id="selectOne" class="com.hb.spring2.controller.DetailController">
 		<property name="dao" ref="daoImpl"></property>
+		<property name="viewName" value="detail"></property>
+	</bean>
+	<bean id="editform" class="com.hb.spring2.controller.DetailController">
+		<property name="dao" ref="daoImpl"></property>
+		<property name="viewName" value="edit"></property>
 	</bean>
 <!-- view -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
