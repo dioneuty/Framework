@@ -30,6 +30,7 @@
 				<prop key="/detail.do">selectOne</prop>
 				<prop key="/edit.do">editform</prop>
 				<prop key="/update.do">updateOne</prop>
+				<prop key="/delete.do">deleteOne</prop>
 			</props>
 		</property> 
 	</bean>
@@ -58,6 +59,11 @@
 		<property name="dao" ref="daoImpl"></property>
 		<constructor-arg name="commandClass" value="com.hb.spring2.model.SimpleVo"></constructor-arg>
 	</bean>
+	<bean id="deleteOne" class="com.hb.spring2.controller.DeleteController">
+		<property name="dao" ref="daoImpl"></property>
+		<constructor-arg name="commandClass" value="com.hb.spring2.model.SimpleVo"></constructor-arg>
+	</bean>
+	
 <!-- view -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/page/"></property>

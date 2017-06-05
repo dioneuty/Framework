@@ -8,4 +8,6 @@ public interface DaoImpl {
 	void insertOne(SimpleVo simpleVo) throws SQLException;
 	SimpleVo selectOne(int sabun) throws SQLException;
 	int updateOne(SimpleVo bean) throws SQLException;
+	int deleteOne(SimpleVo bean) throws SQLException;
+
 }

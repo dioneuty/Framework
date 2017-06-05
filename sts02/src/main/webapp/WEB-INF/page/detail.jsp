@@ -57,7 +57,7 @@
 			<div class="row">
 				<div class="col-md-9 col-md-offset-3">
 					<a class="btn btn-default" role="button" href="edit.do?idx=${bean.sabun }">수정</a>
-					<a class="btn btn-default" role="button" href="delete.do?idx=${bean.sabun }">삭제</a>
+					<a class="btn btn-default" role="button" href="delete.do?sabun=${bean.sabun }">삭제</a>
 				</div>
 			</div> 
 			<!-- content 끝 -->

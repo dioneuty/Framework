@@ -107,5 +107,17 @@ public class SimpleDao3 implements DaoImpl {
 			closeAll();
 		}
 	}
+	@Override
+	public int deleteOne(SimpleVo bean) throws SQLException {
+		String sql = "delete from simple03 where sabun=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bean.getSabun());
+			return pstmt.executeUpdate();
+		} finally {
+			closeAll();
+		}
+	}
 
 }
