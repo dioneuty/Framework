@@ -19,7 +19,6 @@ public class ListController implements Controller {
 	public void setDao(DaoImpl dao) {
 		this.dao = dao;
 	}
-	
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
 		// TODO Auto-generated method stub

@@ -30,7 +30,7 @@ public class Ex01 {
 	public static void main(String[] args){
 		Ex01_1 ex = new Ex01_1();
 //		Ex01_1_1 ex2 = new Ex01_1_1();
-		ex.setEx(new Ex01_1_2()); //getter
+		ex.setEx(new Ex01_1_2()); //getter 제어 역전 
 		ex.func();
 	}
 }

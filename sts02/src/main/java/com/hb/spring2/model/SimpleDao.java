@@ -16,13 +16,14 @@ public class SimpleDao implements DaoImpl{
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	
 	public SimpleDao() {
-		try{
-			Class.forName("oracle.jdbc.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+//		try{
+//			Class.forName("oracle.jdbc.OracleDriver");
+//			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
 	}
 	public List<SimpleVo> selectAll() throws SQLException {
 		String sql = "SELECT * FROM simple03 ORDER BY sabun";
@@ -58,6 +59,26 @@ public class SimpleDao implements DaoImpl{
 			pstmt.setInt(3, simpleVo.getPay());
 			pstmt.executeUpdate();
 		}finally{
+			closeAll();
+		}
+	}
+	@Override
+	public SimpleVo selectOne(int sabun) throws SQLException {
+		String sql = "select * from simple03 where sabun=?";
+		SimpleVo bean = null;
+		try{
+			conn = MyOracle.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			pstmt.executeQuery();
+			if(rs.next()){
+				bean = new SimpleVo(rs.getInt("sabun"),
+						rs.getString("name"),
+						rs.getDate("nalja"),
+						rs.getInt("pay"));
+			}
+			return bean;
+		}finally {
 			closeAll();
 		}
 	}
