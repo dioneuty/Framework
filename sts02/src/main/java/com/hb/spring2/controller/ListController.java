@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import com.hb.spring2.model.DaoImpl;
 import com.hb.spring2.model.SimpleDao;
 import com.hb.spring2.model.SimpleVo;
 
 public class ListController implements Controller {
-	private SimpleDao dao;
+	private DaoImpl dao;
 	
-	public void setDao(SimpleDao dao) {
+	public void setDao(DaoImpl dao) {
 		this.dao = dao;
 	}
 	

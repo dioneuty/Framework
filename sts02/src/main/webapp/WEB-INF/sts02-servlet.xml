@@ -3,9 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!-- url - controller  Mapping -->
-<bean id="dao" class="com.hb.spring2.model.SimpleDao"></bean>
+<bean id="daoImpl" class="com.hb.spring2.model.SimpleDao"></bean>
 
 <!--1. HandlerMapping클래스 결정 -->
+
+<!-- SimpleUrlHandlerMapping implements handlerMapping -->
+<!-- handlerMapping 인터페이스를 통하여 여러 기능을 구현할 수 있다. -->
 	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>

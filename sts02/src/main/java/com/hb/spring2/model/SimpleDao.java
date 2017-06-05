@@ -10,7 +10,9 @@ import java.util.List;
 
 import com.hb.spring2.util.MyOracle;
 
-public class SimpleDao {
+public class SimpleDao implements DaoImpl{
+	private DaoImpl dao;
+	
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
