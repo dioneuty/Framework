@@ -43,4 +43,16 @@ public class SimpleDao {
 		if(pstmt != null) pstmt.close();
 		if(conn != null) conn.close();
 	}
+	public void insertOne(SimpleVo simpleVo) throws SQLException {
+		String sql = "insert into simple03 values (?,?,sysdate,?)";
+		try{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, simpleVo.getSabun());
+			pstmt.setString(2, simpleVo.getName());
+			pstmt.setInt(3, simpleVo.getPay());
+			pstmt.executeUpdate();
+		}finally{
+			closeAll();
+		}
+	}
 }

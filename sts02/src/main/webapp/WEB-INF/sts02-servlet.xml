@@ -10,12 +10,13 @@
 				<prop key="/index.do">index</prop>
 				<prop key="/list.do">selectAll</prop>
 				<prop key="/add.do">addform</prop>
+				<prop key="/insert.do">insertOne</prop>
 			</props>
 		</property> 
 	</bean>
 <!--2. controller클래스 결정 -->	
 	<bean id="index" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
-		<property name="viewName" value="index"></property>
+		<property name="viewName" value="main"></property>
 	</bean>
 	<bean id="selectAll" class="com.hb.spring2.controller.ListController"></bean>
 	<bean id="addform" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
