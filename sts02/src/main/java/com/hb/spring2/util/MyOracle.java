@@ -8,10 +8,8 @@ public class MyOracle {
 	private static Connection conn;
 	private MyOracle() {
 		try {
-			if(conn == null || conn.isClosed()){
 				Class.forName("oracle.jdbc.OracleDriver");
 				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
