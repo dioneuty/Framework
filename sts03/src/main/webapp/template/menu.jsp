@@ -9,7 +9,7 @@
 <body>
 		 <div class="row menu">
 		 	<div class="col-md-12">
-		 		<ul>
+		 		<ul class="nav navbar-nav">
 		 			<li><a href="#">HOME</a></li>
 		 			<li><a href="#">로그인</a></li>
 		 			<li><a href="list.do">게시판</a></li>

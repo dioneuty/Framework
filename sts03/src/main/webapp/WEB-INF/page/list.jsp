@@ -40,14 +40,14 @@
 				<th>날짜</th>
 				<th>금액</th>
 			</tr>
-			<%-- <c:forEach items="alist" var="bean">
+			<c:forEach items="${alist }" var="bean">
 			<tr>
 				<td>${bean.sabun }</td>
 				<td>${bean.name }</td>
 				<td>${bean.nalja }</td>
 				<td>${bean.pay }</td>
-			</tr>	
-			</c:forEach> --%>
+			</tr>
+			</c:forEach>
 		</table>
 	</div>
 	<jsp:include page="/template/menu.jsp"></jsp:include>
