@@ -28,7 +28,7 @@ public class DeleteController extends AbstractCommandController {
 		if(dao.deleteOne(bean) > 0){
 			mav.setViewName("redirect:list.do");
 		}else{
-			mav.setViewName("redirect:edit.do?idx="+bean.getSabun());
+			mav.setViewName("redirect:detail.do?idx="+bean.getSabun());
 		}
 		return mav;
 	}
