@@ -9,7 +9,35 @@ class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean
 
 <!-- controller bean -->
 <bean name="/list.do" class="com.hb.spring3.controller.SelectAllController">
-	<property name="dao" ref="simpleDao"></property>
+	<property name="dao" ref="dao"></property>
+</bean>
+<bean name="/detail.do" class="com.hb.spring3.controller.SelectOneController">
+	<property name="dao" ref="dao"></property>
+	<property name="viewName" value="detail"></property>
+</bean>
+<bean name="/edit.do" class="com.hb.spring3.controller.SelectOneController">
+	<property name="dao" ref="dao"></property>
+	<property name="viewName" value="edit"></property>
+</bean>
+
+<bean name="/add.do" 
+class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+	<property name="viewName" value="add"></property>
+</bean>
+
+<bean name="/insert.do" class="com.hb.spring3.controller.InsertOneController">
+	<constructor-arg value="com.hb.spring3.model.SimpleVo"></constructor-arg>
+	<property name="dao" ref="dao"></property>
+</bean>
+
+<bean name="/update.do" class="com.hb.spring3.controller.UpdateOneController">
+	<constructor-arg value="com.hb.spring3.model.SimpleVo"></constructor-arg>
+	<property name="dao" ref="dao"></property>
+</bean>
+
+<bean name="/delete.do" class="com.hb.spring3.controller.DeleteOneController">
+	<constructor-arg value="com.hb.spring3.model.SimpleVo"></constructor-arg>
+	<property name="dao" ref="dao"></property>
 </bean>
 
 <!-- viewResolver 선택 -->

@@ -1,0 +1,41 @@
+package com.hb.spring3.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.validation.BindException;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.AbstractCommandController;
+
+import com.hb.spring3.model.SimpleDao;
+import com.hb.spring3.model.SimpleVo;
+
+public class UpdateOneController extends AbstractCommandController {
+	
+	private SimpleDao dao;
+
+	public void setDao(SimpleDao dao) {
+		this.dao = dao;
+	}
+	
+	public UpdateOneController(Class commandName) {
+		setCommandClass(commandName);
+	}
+	
+	@Override
+	protected ModelAndView handle(HttpServletRequest req
+			, HttpServletResponse resp
+			, Object obj, BindException arg3)
+			throws Exception {
+		req.setCharacterEncoding("UTF-8");
+		ModelAndView mav = new ModelAndView();
+		SimpleVo bean = (SimpleVo)obj;
+		if(dao.updateOne(bean)>0){
+			mav.setViewName("redirect:detail.do?idx="+bean.getSabun());			
+		}else{
+			mav.setViewName("redirect:edit.do?idx="+bean.getSabun());
+		}
+		return mav;
+	}
+
+}

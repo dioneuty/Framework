@@ -1,5 +1,6 @@
 package com.hb.spring3.model;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -12,9 +13,11 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SimpleDaoImplTest {
-
+	
 	private static SimpleDaoImpl dao;
 
 	@BeforeClass
@@ -27,6 +30,11 @@ public class SimpleDaoImplTest {
 //		ds.setPassword("tiger");
 //		//((SimpleDaoImpl)dao).setDs(ds);
 //		dao = new SimpleDaoImpl(ds); //객체 하나만 생성(Singleton)
+		
+		ApplicationContext ac = new ClassPathXmlApplicationContext("/context-config.xml");
+		dao = (SimpleDaoImpl) ac.getBean("simpleDao"); //context-config.xml에서의 bean 태그 simpleDao 호출
+		// 자바에서의 static 처럼 스프링 프레임워크가 시작 전에 
+		// heap 영역에 객체를 xml에 설정되어 있는 것을 바탕으로 객체들을 미리 만들어놓는다. 
 	}
 
 	@AfterClass
@@ -53,8 +61,15 @@ public class SimpleDaoImplTest {
 	}
 
 	@Test
-	public void testSelectOne() {
-		fail("Not yet implemented");
+	public void testSelectOne() throws SQLException {
+		// 342 efwe 2017-06-05 6464;
+		SimpleVo me = new SimpleVo(
+				1111,"efwe",null,6464);
+		SimpleVo bean = dao.selectOne(me.getSabun());
+//		if(me.equals(bean)){
+//			assertTrue(true);
+//		}
+		assertEquals(me, bean);
 	}
 
 	@Test

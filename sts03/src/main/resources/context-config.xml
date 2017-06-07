@@ -10,7 +10,7 @@
 		<property name="password" value="tiger"></property>	
 	</bean>
 
-	<bean id="simpleDao" class="com.hb.spring3.model.SimpleDaoImpl">
+	<bean id="dao" class="com.hb.spring3.model.SimpleDaoImpl">
 	<!-- 1.setter 주입 -->
 		<!-- <property name="ds" ref="dataSource"></property> -->
 	<!-- 2. 생성자 주입 -->	
