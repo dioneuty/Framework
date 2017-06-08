@@ -2,7 +2,7 @@ table{
 	width: 80%;
 }	
 table *{
-	text-align: centere;
+	text-align: center;
 }
 table td{
 	border: 2px solid black;
