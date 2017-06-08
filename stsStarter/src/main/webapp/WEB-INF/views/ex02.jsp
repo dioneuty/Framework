@@ -9,7 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Ex02 page</h1>
-	<p>${msg }</p>
+	<h1>Ex02 page - ${msg }</h1>
+	<form action="ex10" method="post">
+		<label for="id"></label>
+		<input type="text" name="id" id="id">
+		<label for="pw"></label>
+		<input type="text" name="pw" id="pw">
+		<button>전달</button>
+	</form>
 </body>
 </html>

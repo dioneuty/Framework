@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>ex06</h1>
-	<a href="./ex07?msg=abcd">msg</a>
+	<h1>ex07 - ${msg }</h1>
+	<a href="./ex08?msg=abc1234">ex08</a>
 </body>
 </html>

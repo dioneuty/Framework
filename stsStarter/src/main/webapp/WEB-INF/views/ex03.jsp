@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>ex06</h1>
-	<a href="./ex07?msg=abcd">msg</a>
+	<h1>result</h1>
+	<p>id:${id }</p>
+	<p>pw:${pw }</p>
 </body>
 </html>
