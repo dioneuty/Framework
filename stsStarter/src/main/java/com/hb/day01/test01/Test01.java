@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 @org.springframework.stereotype.Controller
-public class Test1 implements Controller {
+public class Test01 implements Controller {
 
 	@Override
 	@RequestMapping("/ex01")

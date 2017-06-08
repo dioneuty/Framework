@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class Test4 {
+public class Test04 {
 	@RequestMapping("/ex04")
 	public String myPage01(Model model){
 		model.addAttribute("msg","¸ðµ¨·Î Àü´Þ");

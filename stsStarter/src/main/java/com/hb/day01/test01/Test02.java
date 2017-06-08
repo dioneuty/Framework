@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class Test2 {
+public class Test02 {
 	
 	@RequestMapping("/ex02")
 	public ModelAndView myPage01(){
