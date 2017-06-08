@@ -8,6 +8,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	<beans:bean id="dao" class="com.hb.day01.model.SimpleDao"></beans:bean>
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
@@ -22,7 +23,4 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.hb.day01" />
-	
-	
-	
 </beans:beans>
