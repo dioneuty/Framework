@@ -6,6 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="/day01/css/table.css">
+
 </head>
 <body>
 	<h1>리스트 페이지</h1>
