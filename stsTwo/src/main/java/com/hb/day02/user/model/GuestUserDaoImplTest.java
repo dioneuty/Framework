@@ -1,5 +1,6 @@
 package com.hb.day02.user.model;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.fail;
@@ -27,13 +28,13 @@ public class GuestUserDaoImplTest {
 	public void testSelectAll() throws SQLException {
 		List<GuestUserVo> list = dao.selectAll();
 		assertNotNull("list==null", list);
-		assertSame(0, list.size());
+		assertSame(1, list.size());
 	}
 
-//	@Test
-//	public void testSelectOne() {
-//		fail("Not yet implemented");
-//	}
+	@Test
+	public void testSelectOne() throws SQLException{
+		assertEquals(new GuestUserVo(1,1111,"dog",null), dao.selectOne(1));//Date는 검사 안 함 
+	}
 //
 //	@Test
 //	public void testInsertOne() {

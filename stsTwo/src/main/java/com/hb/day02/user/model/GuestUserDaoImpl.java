@@ -13,34 +13,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class GuestUserDaoImpl implements GuestUserDao<GuestUserVo> {
 	@Autowired
+	private DataSource dataSource;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	private DataSource dataSource;
 	
 	/*public GuestUserDaoImpl(DataSource dataSource) {
-		this.dataSource = dataSource;
+	this.dataSource = dataSource;
 	}*/
+	
+	private void closeAll() throws SQLException {
+		if(rs!=null)rs.close();
+		if(pstmt!=null)pstmt.close();
+		if(conn!=null)conn.close();
+	}
 	
 	@Override
 	public List<GuestUserVo> selectAll() throws SQLException {
-		String sql = "select * from guest_user order by num";
-		List<GuestUserVo> list = null;
-		try {
-			conn = dataSource.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			//자원 절약
-			list = new ArrayList<GuestUserVo>(); 
-			while (rs.next()) {
+		String sql="SELECT * FROM GUEST_USER ORDER BY NUM";
+		List<GuestUserVo> list=null;
+		try{
+			conn=dataSource.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			list=new ArrayList<GuestUserVo>();
+			while(rs.next()){
 				list.add(new GuestUserVo(
-					rs.getInt("num")
-					, rs.getInt("sabun")
-					, rs.getString("name")
-					, rs.getDate("nalja")
-					));
+						rs.getInt("num")
+						,rs.getInt("sabun")
+						,rs.getString("name")
+						,rs.getDate("nalja")
+						));
 			}
-		} finally {
+		}finally {
 			closeAll();
 		}
 		return list;
@@ -48,26 +53,49 @@ public class GuestUserDaoImpl implements GuestUserDao<GuestUserVo> {
 
 	@Override
 	public GuestUserVo selectOne(int idx) throws SQLException {
-		return null;
+		String sql = "select * from guest_user where num=?";
+		GuestUserVo bean = null;
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				bean = new GuestUserVo(rs.getInt("num")
+						, rs.getInt("sabun")
+						, rs.getString("name")
+						, rs.getDate("nalja"));
+			}
+		} finally {		
+			closeAll();
+		}
+		return bean;
 	}
 
 	@Override
 	public void insertOne(GuestUserVo bean) throws SQLException {
+		String sql = "insert into guest_user values((select max(num)+1 from guest_user),?,?,sysdate)";
+		try {
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bean.getSabun());
+			pstmt.setString(2, bean.getName());
+			pstmt.executeUpdate();
+		} finally {
+			closeAll();
+		}
 	}
 
 	@Override
 	public int updateOne(GuestUserVo bean) throws SQLException {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int deleteOne(int idx) throws SQLException {
+		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	private void closeAll() throws SQLException {
-		if(rs != null) rs.close();
-		if(pstmt != null) pstmt.close();
-		if(conn != null) conn.close();
-	}
+
 }

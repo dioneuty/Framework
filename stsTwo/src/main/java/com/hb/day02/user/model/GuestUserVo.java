@@ -3,12 +3,14 @@ package com.hb.day02.user.model;
 import java.sql.Date;
 
 public class GuestUserVo {
-	private int num, sabun;
+	private int num;
+	private int sabun;
 	private String name;
 	private Date nalja;
 	
 	public GuestUserVo() {
 	}
+
 	public GuestUserVo(int num, int sabun, String name, Date nalja) {
 		super();
 		this.num = num;
@@ -20,6 +22,7 @@ public class GuestUserVo {
 	public int getNum() {
 		return num;
 	}
+
 	public void setNum(int num) {
 		this.num = num;
 	}
@@ -27,6 +30,7 @@ public class GuestUserVo {
 	public int getSabun() {
 		return sabun;
 	}
+
 	public void setSabun(int sabun) {
 		this.sabun = sabun;
 	}
@@ -34,6 +38,7 @@ public class GuestUserVo {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -41,6 +46,7 @@ public class GuestUserVo {
 	public Date getNalja() {
 		return nalja;
 	}
+
 	public void setNalja(Date nalja) {
 		this.nalja = nalja;
 	}
@@ -49,17 +55,17 @@ public class GuestUserVo {
 	public String toString() {
 		return "GuestUserVo [num=" + num + ", sabun=" + sabun + ", name=" + name + ", nalja=" + nalja + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((nalja == null) ? 0 : nalja.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + num;
 		result = prime * result + sabun;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -69,11 +75,6 @@ public class GuestUserVo {
 		if (getClass() != obj.getClass())
 			return false;
 		GuestUserVo other = (GuestUserVo) obj;
-		if (nalja == null) {
-			if (other.nalja != null)
-				return false;
-		} else if (!nalja.equals(other.nalja))
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -85,4 +86,6 @@ public class GuestUserVo {
 			return false;
 		return true;
 	}
+	
+
 }

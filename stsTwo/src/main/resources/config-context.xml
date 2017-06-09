@@ -6,7 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
-	<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		p:driverClassName="oracle.jdbc.OracleDriver"
 		p:url="jdbc:oracle:thin:@localhost:1521:xe"
 		p:username="scott" p:password="tiger"/>
@@ -17,3 +17,4 @@
 	
 	<context:annotation-config></context:annotation-config>
 </beans>
+	
