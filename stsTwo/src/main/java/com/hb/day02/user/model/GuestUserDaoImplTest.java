@@ -10,13 +10,17 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class GuestUserDaoImplTest {
-	private GuestUserDaoImpl dao;
+	private static GuestUserDaoImpl dao;
 	
 	@BeforeClass
-	public void beforeTest() {
+	public static void beforeTest() {
 		String path = "/config-context.xml";
+		ApplicationContext ac = new ClassPathXmlApplicationContext(path);
+		dao = (GuestUserDaoImpl) ac.getBean("guestUserDao");
 	}
 	
 	@Test
@@ -26,24 +30,24 @@ public class GuestUserDaoImplTest {
 		assertSame(0, list.size());
 	}
 
-	@Test
-	public void testSelectOne() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testInsertOne() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUpdateOne() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testDeleteOne() {
-		fail("Not yet implemented");
-	}
+//	@Test
+//	public void testSelectOne() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testInsertOne() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testUpdateOne() {
+//		fail("Not yet implemented");
+//	}
+//
+//	@Test
+//	public void testDeleteOne() {
+//		fail("Not yet implemented");
+//	}
 
 }

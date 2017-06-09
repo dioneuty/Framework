@@ -9,11 +9,18 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class GuestUserDaoImpl implements GuestUserDao<GuestUserVo> {
+	@Autowired
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private DataSource dataSource;
+	
+	/*public GuestUserDaoImpl(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}*/
 	
 	@Override
 	public List<GuestUserVo> selectAll() throws SQLException {

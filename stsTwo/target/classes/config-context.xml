@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="guestUserDao" class="com.hb.day02.user.model.GuestUserDaoImpl"></bean>
-
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+	<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="username" value="scott"></property>
+		<property name="password" value="tiger"></property>
+		
+		<!-- 다행히 datasoucre 설정 기본값 있음 -->
+		<!-- <property name="maxActive" value="50"></property>
+		<property name="maxIdle" value="10"></property>
+		<property name="maxWait" value="-1"></property> -->
+		
+	</bean>
+	<context:annotation-config></context:annotation-config>
+	
+	<bean id="guestUserDao" class="com.hb.day02.user.model.GuestUserDaoImpl">
+		<!-- <constructor-arg name="dataSource" ref="dataSource"></constructor-arg> -->
+	</bean>
+	
 </beans>
