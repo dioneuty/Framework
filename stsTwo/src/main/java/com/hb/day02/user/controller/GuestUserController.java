@@ -26,7 +26,7 @@ public class GuestUserController {
 			model.addAttribute("alist", guestUserdao.selectAll());
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		}	
 	}
 	
 	@RequestMapping("user/detail")
