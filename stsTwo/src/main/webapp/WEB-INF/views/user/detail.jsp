@@ -48,8 +48,8 @@
 			</c:forEach>
 		</table>
 		<div class="btn-group btn-group-justified btn-group-lg" role="group" aria-label="...">
-			<button type="button" class="btn btn-primary">수정</button>
-			<button type="button" class="btn btn-danger">삭제</button>
+			<a href="edit?idx=${bean.num }" class="btn btn-primary" role="button">수정</a>
+			<a href="del?idx=${bean.num }" class="btn btn-danger" role="button">삭제</a>
 		</div>
 	</div>
 	<jsp:include page="/template/footer.jsp"></jsp:include>

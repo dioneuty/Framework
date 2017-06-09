@@ -14,27 +14,28 @@
 	<div class="panel-body">
 		<div class="page-header">
 			<h1>
-				입력페이지<small>Form페이지</small>
+				${title }페이지<small>Form페이지</small>
 			</h1>
-			<form class="form-horizontal" method="post">
+			<form class="form-horizontal" action="${nxturl }" method="post">
+				<input type="hidden" name="num" value="${bean.num==null?0:bean.num }" />
 				<div class="form-group">
-					<label for="sabun" class="col-sm-2 control-label">sabun</label>
+					<label for="sabun" class="col-sm-2 control-label">사번</label>
 					<div class="col-sm-10">
-						<input type="text" name="sabun" class="form-control" id="sabun"
-							placeholder="sabun">
+						<input type="text" value="${bean.sabun }" name="sabun" class="form-control" id="sabun"
+							placeholder="사번"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">name</label>
+					<label for="name" class="col-sm-2 control-label">이름</label>
 					<div class="col-sm-10">
-						<input type="text" name="name" class="form-control" id="name"
-							placeholder="name">
+						<input type="text" value="${bean.name }" name="name" class="form-control" id="name"
+							placeholder="이름"/>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary btn-block">입력</button>
+						<button type="submit" class="btn btn-primary btn-block">${title }</button>
 					</div>
 				</div>
 			</form>

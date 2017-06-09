@@ -41,10 +41,11 @@ public class GuestUserController {
 	}
 	
 	@RequestMapping(value = "user/add", method = RequestMethod.GET)
-	public String addForm() {
+	public String addForm(Model model) {
+		model.addAttribute("title", "입력");
+		model.addAttribute("nxturl", "add");
 		return "user/form";
 	}
-	
 	@RequestMapping(value = "user/add", method = RequestMethod.POST)
 	public String insertOne(@ModelAttribute GuestUserVo bean) {
 		log.debug(bean);
@@ -54,5 +55,30 @@ public class GuestUserController {
 			e.printStackTrace();
 		}
 		return "redirect:list";
+	}
+	
+	@RequestMapping(value = "user/edit", method = RequestMethod.GET)
+	public String editForm(Model model, int idx) {
+		model.addAttribute("title", "수정");
+		model.addAttribute("nxturl", "edit");
+		try {
+			model.addAttribute("bean", guestUserdao.selectOne(idx));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "user/form";
+	}
+	@RequestMapping(value = "user/edit", method = RequestMethod.POST)
+	public String updateOne(@ModelAttribute GuestUserVo bean) {
+		int result = 0;
+		try {
+			result = guestUserdao.updateOne(bean);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(result>0)
+			return "redirect:detail?idx="+bean.getNum();
+		else
+			return "redirect:edit?idx="+bean.getNum();
 	}
 }
