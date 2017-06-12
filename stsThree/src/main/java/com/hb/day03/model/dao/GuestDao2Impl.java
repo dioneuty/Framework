@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.hb.day03.model.dto.GuestVo;
 
-public class GuestDaoImpl2 extends JdbcTemplate implements GuestDao {
+public class GuestDao2Impl extends JdbcTemplate implements GuestDao {
 	private DataSource dataSource;
 	
 	@Override
@@ -26,6 +26,7 @@ public class GuestDaoImpl2 extends JdbcTemplate implements GuestDao {
 		return query("select * from guest_day03", new RowMapper<GuestVo>(){
 			@Override
 			public GuestVo mapRow(ResultSet rs, int idx) throws SQLException {
+				System.out.println("impl2 ½ÇÇà");
 				GuestVo bean = new GuestVo();
 				bean.setSabun(rs.getInt("sabun"));
 				bean.setName(rs.getString("name"));

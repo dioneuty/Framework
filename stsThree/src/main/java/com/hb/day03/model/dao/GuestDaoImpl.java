@@ -14,12 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.hb.day03.model.dto.GuestVo;
 
 public class GuestDaoImpl implements GuestDao {
-	@Autowired
+	// @Autowired
 	private DataSource dataSource;
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	
+		
 	/*public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}*/
