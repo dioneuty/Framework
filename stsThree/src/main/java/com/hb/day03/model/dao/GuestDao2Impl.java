@@ -56,7 +56,7 @@ public class GuestDao2Impl extends JdbcTemplate implements GuestDao {
 
 	@Override
 	public int updateOne(GuestVo bean) throws SQLException {
-		return update("update guest day03 set name=?, pay=? where sabun=?",new Object[]{bean.getName(),bean.getPay(),bean.getSabun()});
+		return update("update guest_day03 set name=?, pay=? where sabun=?",new Object[]{bean.getName(),bean.getPay(),bean.getSabun()});
 	}
 
 	@Override

@@ -11,7 +11,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.hb.day03.model.dto.GuestVo;
 
 public class GuestDao3Impl implements GuestDao{
-//	@Autowired
+	@Autowired
 	private JdbcTemplate jdbcOperations;
 	
 	public void setJdbcOperations(JdbcTemplate jdbcOperations) {
@@ -24,7 +24,7 @@ public class GuestDao3Impl implements GuestDao{
 		return jdbcOperations.query("select * from guest_day03", new RowMapper<GuestVo>(){
 			@Override
 			public GuestVo mapRow(ResultSet rs, int idx) throws SQLException {
-				System.out.println("impl2 실행");
+				System.out.println("impl3 실행");
 				GuestVo bean = new GuestVo();
 				bean.setSabun(rs.getInt("sabun"));
 				bean.setName(rs.getString("name"));
@@ -54,7 +54,7 @@ public class GuestDao3Impl implements GuestDao{
 
 	@Override
 	public int updateOne(GuestVo bean) throws SQLException {
-		return jdbcOperations.update("update guest day03 set name=?, pay=? where sabun=?",new Object[]{bean.getName(),bean.getPay(),bean.getSabun()});
+		return jdbcOperations.update("update guest_day03 set name=?, pay=? where sabun=?",new Object[]{bean.getName(),bean.getPay(),bean.getSabun()});
 	}
 
 	@Override
