@@ -13,8 +13,11 @@
 		<property name="password" value="tiger"></property>
 	</bean>
 
-	<bean id="guestDao" class="com.hb.day03.model.dao.GuestDao2Impl">
-		<property name="dataSource" ref="dataSource"></property>
+	<bean id="jdbcOperations" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
+	<bean id="guestDao" class="com.hb.day03.model.dao.GuestDao3Impl">
+		<property name="jdbcOperations" ref="jdbcOperations"></property>
 	</bean>
 	
 </beans>
