@@ -12,9 +12,13 @@
 		<property name="password" value="tiger"></property>
 	</bean>
 
-	<bean id="guestDao" class="com.hb.day03.model.dao.GuestDaoImpl">
-		<!-- <property name="dataSource" ref="dataSource"></property> -->
+
+	<bean id="guestDao" class="com.hb.day03.model.dao.GuestDaoImpl2">
+		<property name="dataSource" ref="dataSource"></property>	
 	</bean>
+	<!-- <bean id="guestDao" class="com.hb.day03.model.dao.GuestDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean> -->
 	<context:annotation-config></context:annotation-config>
 
 </beans>
