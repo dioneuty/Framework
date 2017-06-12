@@ -13,8 +13,12 @@ import com.hb.day03.model.dto.GuestVo;
 public class GuestDao3Impl implements GuestDao{
 	@Autowired
 	private JdbcTemplate jdbcOperations;
-	private RowMapper mapper = new RowMapper<GuestVo>() {
-
+	
+	public void setJdbcOperations(JdbcTemplate jdbcOperations) {
+		this.jdbcOperations = jdbcOperations;
+	}
+	
+	class Inner implements RowMapper<GuestVo>{
 		@Override
 		public GuestVo mapRow(ResultSet rs, int idx) throws SQLException {
 			System.out.println("impl3 ½ÇÇà");
@@ -25,16 +29,12 @@ public class GuestDao3Impl implements GuestDao{
 			bean.setPay(rs.getInt("pay"));
 			return bean;
 		}
-	};
-	
-	public void setJdbcOperations(JdbcTemplate jdbcOperations) {
-		this.jdbcOperations = jdbcOperations;
 	}
 	
 	@Override
 	public List<GuestVo> selectAll() throws SQLException {
 //		return queryForList("select * from guest_day03", GuestVo.class);
-		return jdbcOperations.query("select * from guest_day03", mapper);	
+		return jdbcOperations.query("select * from guest_day03", new Inner());	
 	}
 
 	@Override
