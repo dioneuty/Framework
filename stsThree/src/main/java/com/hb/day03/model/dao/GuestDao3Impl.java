@@ -13,6 +13,19 @@ import com.hb.day03.model.dto.GuestVo;
 public class GuestDao3Impl implements GuestDao{
 	@Autowired
 	private JdbcTemplate jdbcOperations;
+	private RowMapper mapper = new RowMapper<GuestVo>() {
+
+		@Override
+		public GuestVo mapRow(ResultSet rs, int idx) throws SQLException {
+			System.out.println("impl3 실행");
+			GuestVo bean = new GuestVo();
+			bean.setSabun(rs.getInt("sabun"));
+			bean.setName(rs.getString("name"));
+			bean.setNalja(rs.getString("nalja"));
+			bean.setPay(rs.getInt("pay"));
+			return bean;
+		}
+	};
 	
 	public void setJdbcOperations(JdbcTemplate jdbcOperations) {
 		this.jdbcOperations = jdbcOperations;
@@ -21,18 +34,7 @@ public class GuestDao3Impl implements GuestDao{
 	@Override
 	public List<GuestVo> selectAll() throws SQLException {
 //		return queryForList("select * from guest_day03", GuestVo.class);
-		return jdbcOperations.query("select * from guest_day03", new RowMapper<GuestVo>(){
-			@Override
-			public GuestVo mapRow(ResultSet rs, int idx) throws SQLException {
-				System.out.println("impl3 실행");
-				GuestVo bean = new GuestVo();
-				bean.setSabun(rs.getInt("sabun"));
-				bean.setName(rs.getString("name"));
-				bean.setNalja(rs.getString("nalja"));
-				bean.setPay(rs.getInt("pay"));
-				return bean;
-			}
-		});	
+		return jdbcOperations.query("select * from guest_day03", mapper);	
 	}
 
 	@Override
