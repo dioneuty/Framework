@@ -9,12 +9,16 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class GuestDaoTest {
 	private static GuestDao guestDao;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		guestDao = new IbatisDaoImpl();
+		//guestDao = new IbatisDaoImpl();
+		ApplicationContext ac = new ClassPathXmlApplicationContext("config-context.xml"); //절대주소
+		guestDao = (GuestDao) ac.getBean("guestDao");
 	}
 
 	@AfterClass

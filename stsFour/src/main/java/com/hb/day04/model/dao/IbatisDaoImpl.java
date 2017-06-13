@@ -12,8 +12,12 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 public class IbatisDaoImpl implements GuestDao {
 	private SqlMapClient sqlMapClient;
 	
+	public void setSqlMapClient(SqlMapClient sqlMapClient) {
+		this.sqlMapClient = sqlMapClient;
+	}
+	
 	public IbatisDaoImpl() {
-		String path="./sqlMapConfig.xml";
+		String path="./sqlMapConfig.xml"; //상대주소 
 		try {
 			Reader reader = Resources.getResourceAsReader(path);
 			sqlMapClient = SqlMapClientBuilder.buildSqlMapClient(reader);
@@ -38,7 +42,7 @@ public class IbatisDaoImpl implements GuestDao {
 
 	@Override
 	public void insertOne(GuestVo bean) throws SQLException {
-		// TODO Auto-generated method stub
+		sqlMapClient.insert("insertOne",bean);
 
 	}
 
