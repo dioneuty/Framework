@@ -15,8 +15,13 @@ import com.hb.day04pm.model.dto.GuestVo;
 public class GuestDaoImpl1 implements GuestDao {
 	
 	private SqlSessionFactory sqlSessionFactory;
-
-	public GuestDaoImpl1() throws IOException {
+	private SqlSession sqlSession;
+	
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	/*public GuestDaoImpl1() throws IOException {
 		String resource = "./mybatis-config.xml";
 		
 		InputStream inputStream;
@@ -27,20 +32,19 @@ public class GuestDaoImpl1 implements GuestDao {
 		} catch (Exception e) {
 			System.out.println("config파일 리딩 오류");
 		}
-	}
+	}*/
 	
 	@Override
 	public List<GuestVo> selectAll() throws SQLException {
-		SqlSession session = sqlSessionFactory.openSession();
-		List<GuestVo> list = session.selectList("guest.selectAll"); //네임스페이스.name
+//		session = sqlSessionFactory.openSession();
+		List<GuestVo> list = sqlSession.selectList("guest.selectAll"); //네임스페이스.name
 		System.out.println(list);
 		return list;
 	}
 
 	@Override
 	public GuestVo selectOne(int sabun) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("guest.selectOne", sabun);
 	}
 
 	@Override
@@ -51,14 +55,12 @@ public class GuestDaoImpl1 implements GuestDao {
 
 	@Override
 	public int updateOne(GuestVo bean) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("guest.updateOne", bean);
 	}
 
 	@Override
 	public int deleteOne(int sabun) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("guest.deleteOne", sabun);
 	}
 
 }
