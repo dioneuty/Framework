@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
@@ -30,8 +31,10 @@ public class GuestDaoImpl1 implements GuestDao {
 	
 	@Override
 	public List<GuestVo> selectAll() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		SqlSession session = sqlSessionFactory.openSession();
+		List<GuestVo> list = session.selectList("guest.selectAll"); //네임스페이스.name
+		System.out.println(list);
+		return list;
 	}
 
 	@Override
