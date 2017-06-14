@@ -3,19 +3,20 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="guest">
-  <select id="selectAll" resultType="com.hb.day04pm.model.dto.GuestVo">
-    SELECT * FROM GUEST_DAY03 ORDER BY SABUN
-  </select>
-  <select id="selectOne" parameterType="int" resultType="com.hb.day04pm.model.dto.GuestVo">
-  	SELECT * FROM GUEST_DAY03 WHERE SABUN=#{value}
-  </select>
-  <insert id="insertOne" parameterType="com.hb.day04pm.model.dto.GuestVo">
-  	INSERT INTO GUEST_DAY03 VALUES(#{sabun},#{name},TO_CHAR(SYSDATE,'YYYY/MM/DD'),#{pay})
-  </insert>
-  <update id="updateOne" parameterType="com.hb.day04pm.model.dto.GuestVo">
-  	UPDATE GUEST_DAY03 SET NAME=#{name}, PAY=#{pay} WHERE SABUN=#{sabun}
-  </update>
-  <delete id="deleteONe" parameterType="int">
-  	DELETE FROM GUEST_DAY03 WHERE SABUN=#{value}
-  </delete>
+	<select id="selectAll" resultType="com.hb.day04pm.model.dto.GuestVo">
+		SELECT * FROM GUEST_DAY03 ORDER BY SABUN
+	</select>
+	<select id="selectOne" parameterType="int" resultType="com.hb.day04pm.model.dto.GuestVo">
+		SELECT * FROM GUEST_DAY03 WHERE SABUN=#{value}
+	</select>
+	<insert id="insertOne" parameterType="com.hb.day04pm.model.dto.GuestVo">
+		INSERT INTO GUEST_DAY03 VALUES
+		(#{sabun},#{name},TO_CHAR(SYSDATE,'YYYY/MM/DD'),#{pay})
+	</insert>
+	<update id="updateOne" parameterType="com.hb.day04pm.model.dto.GuestVo">
+		UPDATE GUEST_DAY03 SET NAME=#{name},PAY=#{pay} WHERE SABUN=#{sabun}
+	</update>
+	<delete id="deleteOne" parameterType="int">
+		DELETE FROM GUEST_DAY03 WHERE SABUN=#{value}
+	</delete>
 </mapper>

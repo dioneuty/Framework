@@ -36,8 +36,7 @@ public class IbatisDaoImpl implements GuestDao {
 
 	@Override
 	public GuestVo selectOne(int sabun) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return (GuestVo) sqlMapClient.queryForObject("selectOne", sabun);
 	}
 
 	@Override

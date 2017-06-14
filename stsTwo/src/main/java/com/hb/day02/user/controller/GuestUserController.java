@@ -17,6 +17,7 @@ import com.hb.day02.user.model.GuestUserVo;
 @Controller
 public class GuestUserController {
 	private Logger log = Logger.getLogger(this.getClass());
+	
 	@Autowired
 	private GuestUserDao<GuestUserVo> guestUserdao;
 	
@@ -28,7 +29,6 @@ public class GuestUserController {
 			e.printStackTrace();
 		}	
 	}
-	
 	@RequestMapping("user/detail")
 	public void selectOne(Model model, @RequestParam("idx") int idx) {
 		try {
@@ -37,6 +37,7 @@ public class GuestUserController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		log.debug("detail end");
 	}
 	
@@ -49,11 +50,13 @@ public class GuestUserController {
 	@RequestMapping(value = "user/add", method = RequestMethod.POST)
 	public String insertOne(@ModelAttribute GuestUserVo bean) {
 		log.debug(bean);
+		
 		try {
 			guestUserdao.insertOne(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return "redirect:list";
 	}
 	
@@ -61,21 +64,25 @@ public class GuestUserController {
 	public String editForm(Model model, int idx) {
 		model.addAttribute("title", "¼öÁ¤");
 		model.addAttribute("nxturl", "edit");
+		
 		try {
 			model.addAttribute("bean", guestUserdao.selectOne(idx));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return "user/form";
 	}
 	@RequestMapping(value = "user/edit", method = RequestMethod.POST)
 	public String updateOne(@ModelAttribute GuestUserVo bean) {
 		int result = 0;
+		
 		try {
 			result = guestUserdao.updateOne(bean);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		if(result>0)
 			return "redirect:detail?idx="+bean.getNum();
 		else

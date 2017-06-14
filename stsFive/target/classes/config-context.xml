@@ -15,11 +15,12 @@
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 
-	<bean id="guestDao" class="com.hb.day04pm.GuestDaoImpl1">
+	<bean id="guestDao" class="com.hb.day04pm.model.dao.GuestDaoImpl1">
 		<property name="sqlSession" ref="sqlSession"></property>
 	</bean>
 

@@ -1,4 +1,4 @@
-package com.hb.day04pm;
+package com.hb.day04pm.model.dao;
 
 import java.sql.SQLException;
 import java.util.List;

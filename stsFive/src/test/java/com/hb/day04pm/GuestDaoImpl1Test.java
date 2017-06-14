@@ -12,6 +12,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.hb.day04pm.model.dao.GuestDao;
+
 public class GuestDaoImpl1Test {
 	private static GuestDao guestDao;
 	@BeforeClass
