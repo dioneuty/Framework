@@ -1,8 +1,23 @@
 package com.hb.day05am.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+
 public class GuestVo {
-	private int sabun, pay;
-	private String name, nalja;
+	@NotNull
+	@Min(1000)
+	private int sabun;
+	
+	@NotNull
+	@Email
+	@Size(min = 5) //이메일 형식에 맞추려면 최소 5자 이상 필요
+	private String name; 
+	private String nalja;
+	@NotNull
+	private int pay;
 	
 	public GuestVo() {
 		// TODO Auto-generated constructor stub

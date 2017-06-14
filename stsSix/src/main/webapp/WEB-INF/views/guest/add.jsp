@@ -10,11 +10,11 @@
 <h1>입력페이지</h1>
 <form method="post">
 	<label for="sabun">sabun</label>
-	<input type="text" name="sabun" id="sabun" /><br/>
+	<input type="text" value="${bean.sabun }" name="sabun" id="sabun" />${err.sabun }<br/>
 	<label for="name">name</label>
-	<input type="text" name="name" id="name" /><br/>
+	<input type="text" value="${bean.name }" name="name" id="name" />${err.name }<br/>
 	<label for="pay">pay</label>
-	<input type="text" name="pay" id="pay" /><br/>
+	<input type="text" value="${bean.pay }" name="pay" id="pay" />${err.pay }<br/>
 	<button>입력</button>
 </form>
 </body>
