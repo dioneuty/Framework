@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>결과</h1>
-	<p><a href="resources/upload/${fname}">download</a></p>
+	<p><a href="download?idx=${fname}">download</a></p>
 </body>
 </html>

@@ -1,13 +1,18 @@
 package com.hb.day05pm;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Locale;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,5 +53,19 @@ public class HomeController {
 		
 		model.addAttribute("fname", file.getOriginalFilename());
 		return "result";
+	}
+	@RequestMapping("/download")
+	public void donwload(@RequestParam("file") String file, HttpServletResponse res) {
+		File f = new File(path+file);
+		res.setContentType("application/octet-stream);charset=UTF-8");
+		res.setHeader("content-Disposition", "attachment; filename= \" "+file+" \" ");
+		try {
+			FileInputStream fis = new FileInputStream(f); 
+			OutputStream out = res.getOutputStream();
+			FileCopyUtils.copy(fis, out);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+				
 	}
 }
