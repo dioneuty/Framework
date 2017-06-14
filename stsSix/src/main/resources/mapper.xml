@@ -6,4 +6,17 @@
 	<select id="selectAll" resultType="com.hb.day05am.model.GuestVo">
 		SELECT * FROM GUEST_DAY03 ORDER BY SABUN
 	</select>
+	<insert id="insertOne" parameterType="com.hb.day05am.model.GuestVo">
+		INSERT INTO GUEST_DAY03 VALUES
+		(#{sabun},#{name},TO_CHAR(SYSDATE,'YYYY/MM/DD'),#{pay})
+	</insert>
+	<select id="selectOne" parameterType="int" resultType="com.hb.day05am.model.GuestVo">
+		SELECT * FROM GUEST_DAY03 WHERE SABUN=#{sabun}
+	</select>
+	<update id="updateOne" parameterType="com.hb.day05am.model.GuestVo">
+		UPDATE GUEST_DAY03 SET NAME=#{name},PAY=#{pay} WHERE SABUN=#{sabun}
+	</update>
+	<delete id="deleteOne" parameterType="Integer">
+		DELETE FROM GUEST_DAY03 WHERE SABUN=#{value}
+	</delete>
 </mapper>
