@@ -23,7 +23,8 @@ import com.hb.day05am.service.ServiceImpl;
 @Controller
 public class HomeController {
 	@Autowired
-	ServiceCommand service = new ServiceImpl();
+	ServiceCommand service; /*= new ServiceImpl()*/
+	@Autowired
 	private SqlSession sqlSession;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
